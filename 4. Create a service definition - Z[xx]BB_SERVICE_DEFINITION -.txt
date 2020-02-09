@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition'
+define service Z00BB_SERVICE_DEFINITION {
+  expose Z00BB_CDS_LOCATION as location;
+}

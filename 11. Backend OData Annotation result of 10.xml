@@ -1,0 +1,9 @@
+<Annotations Target="cds_z00bb_service_definition.locationType">
+    <Annotation Term="UI.HeaderInfo">
+        <Record>
+            <PropertyValue Property="TypeName" String="Location" />
+            <PropertyValue Property="TypeNamePlural" String="Location List" />
+        </Record>
+    </Annotation>
+</Annotations>
+

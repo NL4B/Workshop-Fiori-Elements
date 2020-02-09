@@ -1,0 +1,37 @@
+CLASS z00bb_cl_fill_table_data DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+    CLASS-METHODS fill_location.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+CLASS zrebb_cl_fill_table_data IMPLEMENTATION.
+
+  METHOD fill_location.
+    TYPES t_location_list       TYPE TABLE OF zre_dt_location   WITH EMPTY KEY.
+    DELETE FROM zre_dt_location.
+    DATA(location_list) = VALUE t_location_list(
+      (
+        locationid  = 9001
+        location    = |Sportpark Oostermeent - Voetbal|
+        street      = |Hendrik Smitlaan|
+        houseno     = |6|
+        postalcode  = |1261 VA|
+        city        = |BLARICUM|
+        area        = |Blaricum-Dorp|
+        phone       = |035-5386098|
+        latitude    = CONV f( |52.27408| )
+        longitude   = CONV f( |5.25773| )
+      )
+    ).
+    INSERT zre_dt_location FROM TABLE @location_list.
+  ENDMETHOD.
+
+  METHOD if_oo_adt_classrun~main.
+    fill_location(  ).
+  ENDMETHOD.
+ENDCLASS.

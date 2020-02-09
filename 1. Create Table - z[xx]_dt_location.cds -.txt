@@ -1,0 +1,25 @@
+@EndUserText.label : 'Locations'
+@AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #LIMITED
+define table z00_dt_location {
+  key client     : abap.clnt not null;
+  key locationid : abap.numc(4) not null;
+  location       : abap.char(80);
+  street         : abap.char(50);
+  houseno        : abap.char(20);
+  postalcode     : abap.char(10);
+  city           : abap.char(30);
+  area           : abap.char(30);
+  phone          : abap.char(30);
+  latitude       : abap.dec(15,12);
+  longitude      : abap.dec(15,12);
+  changedat      : timestampl;
+  @AbapCatalog.anonymizedWhenDelivered : true
+  changedby      : syuname;
+  createdat      : timestampl;
+  @AbapCatalog.anonymizedWhenDelivered : true
+  createdby      : syuname;
+
+}

@@ -1,0 +1,16 @@
+<Annotation Term="UI.LineItem">
+    <Collection>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="locationid" />
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="location" />
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="street" />
+        </Record>
+        <Record Type="UI.DataField">
+            <PropertyValue Property="Value" Path="area" />
+        </Record>
+    </Collection>
+</Annotation>
