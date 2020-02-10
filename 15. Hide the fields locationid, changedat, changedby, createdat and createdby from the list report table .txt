@@ -1,0 +1,41 @@
+@AbapCatalog.sqlViewName: 'Z00BBCL'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Locations'
+
+@Search.searchable: true
+
+@UI.headerInfo.typeName: 'Location'
+@UI.headerInfo.typeNamePlural: 'Location List'
+
+define root view Z00BB_CDS_LOCATION
+  as select from zre_dt_location
+{
+      @UI.hidden: true
+      @UI.lineitem: [{position: 10}]
+  key locationid,
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 20}]
+      location,
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 30}]
+      street,
+      houseno,
+      postalcode,
+      city,
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 40}]
+      area,
+      phone,
+      latitude,
+      longitude,
+      @UI.hidden: true
+      changedat,
+      @UI.hidden: true
+      changedby,
+      @UI.hidden: true
+      createdat,
+      @UI.hidden: true
+      createdby
+}

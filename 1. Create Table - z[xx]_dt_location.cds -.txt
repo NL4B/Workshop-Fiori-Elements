@@ -3,7 +3,7 @@
 @AbapCatalog.tableCategory : #TRANSPARENT
 @AbapCatalog.deliveryClass : #A
 @AbapCatalog.dataMaintenance : #LIMITED
-define table z00_dt_location {
+define table zre_dt_location {
   key client     : abap.clnt not null;
   key locationid : abap.numc(4) not null;
   location       : abap.char(80);
@@ -13,13 +13,25 @@ define table z00_dt_location {
   city           : abap.char(30);
   area           : abap.char(30);
   phone          : abap.char(30);
+  attraction     : abap.char(30);
+  website        : abap.char(200);
+  logo_url       : abap.char(200);
   latitude       : abap.dec(15,12);
   longitude      : abap.dec(15,12);
+  @Semantics.amount.currencyCode : 'zre_dt_location.currency'
+  ticketprice    : abap.curr(15,2);
+  currency       : abap.cuky;
+  @Semantics.quantity.unitOfMeasure : 'zre_dt_location.seats_unit'
+  seats_total    : abap.quan(7,5);
+  @Semantics.quantity.unitOfMeasure : 'zre_dt_location.seats_unit'
+  seats_booked   : abap.quan(7,5);
+  seats_unit     : abap.unit(2);
+  @Semantics.quantity.unitOfMeasure : 'zre_dt_location.rating_unit'
+  rating         : abap.quan(7,5);
+  rating_unit    : abap.unit(2);
   changedat      : timestampl;
-  @AbapCatalog.anonymizedWhenDelivered : true
   changedby      : syuname;
   createdat      : timestampl;
-  @AbapCatalog.anonymizedWhenDelivered : true
   createdby      : syuname;
 
 }
