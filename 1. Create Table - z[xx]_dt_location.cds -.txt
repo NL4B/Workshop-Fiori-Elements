@@ -16,19 +16,18 @@ define table zre_dt_location {
   attraction     : abap.char(30);
   website        : abap.char(200);
   logo_url       : abap.char(200);
+  description    : abap.sstring(1333);
   latitude       : abap.dec(15,12);
   longitude      : abap.dec(15,12);
   @Semantics.amount.currencyCode : 'zre_dt_location.currency'
   ticketprice    : abap.curr(15,2);
   currency       : abap.cuky;
   @Semantics.quantity.unitOfMeasure : 'zre_dt_location.seats_unit'
-  seats_total    : abap.quan(7,5);
+  seats_total    : abap.quan(9,3);
   @Semantics.quantity.unitOfMeasure : 'zre_dt_location.seats_unit'
-  seats_booked   : abap.quan(7,5);
+  seats_booked   : abap.quan(9,3);
   seats_unit     : abap.unit(2);
-  @Semantics.quantity.unitOfMeasure : 'zre_dt_location.rating_unit'
-  rating         : abap.quan(7,5);
-  rating_unit    : abap.unit(2);
+  rating         : abap.dec(9,3);
   changedat      : timestampl;
   changedby      : syuname;
   createdat      : timestampl;

@@ -1,0 +1,8 @@
+@AbapCatalog.sqlViewName: 'Z00BBCAVH'
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Valuehelp for Area'
+/*+[hideWarning] { "IDS" : [ "KEY_CHECK" ]  } */
+define view Z00BB_CDS_AREA_VH as select distinct from zre_dt_location {
+    key area
+}
