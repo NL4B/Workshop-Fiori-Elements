@@ -1,0 +1,7 @@
+@Metadata.layer: layer
+annotate view Z00BB_CDS_BOOKINGS
+    with 
+{
+    element_name;
+    
+}

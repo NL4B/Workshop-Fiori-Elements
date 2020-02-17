@@ -6,6 +6,7 @@ CLASS z00bb_cl_fill_table_data DEFINITION
   PUBLIC SECTION.
     INTERFACES if_oo_adt_classrun.
     CLASS-METHODS fill_location.
+    CLASS-METHODS fill_bookings.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -13,6 +14,80 @@ ENDCLASS.
 
 
 CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
+
+
+  METHOD fill_bookings.
+
+    GET TIME STAMP FIELD DATA(lv_createdat).
+    TYPES t_booking_list       TYPE TABLE OF zre_dt_bookings   WITH EMPTY KEY.
+    DELETE FROM zre_dt_bookings.
+    DATA(lv_visitdat) = cl_abap_tstmp=>add(
+      tstmp = lv_createdat
+      secs  = ( 12 * 24 * 60 * 60  )
+    ).
+        DATA(lv_visitdat2) = cl_abap_tstmp=>add(
+      tstmp = lv_createdat
+      secs  = ( 8 * 24 * 60 * 60  )
+    ).
+        DATA(lv_visitdat3) = cl_abap_tstmp=>add(
+      tstmp = lv_createdat
+      secs  = ( 11 * 24 * 60 * 60  )
+    ).
+
+    DATA(booking_list) = VALUE t_booking_list(
+        (
+          bookingid       = 1
+          firstname       = |Robert|
+          lastname        = |Eijpe|
+          street          = |Bergweg|
+          houseno         = |24|
+          postalcode      = |1261 XX|
+          city            = |Blaricum|
+          country         = |NL|
+          locationid      = 9001
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat
+          numberoftickets = 2
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 2
+          firstname       = |Hans|
+          lastname        = |Nooitgedacht|
+          street          = |Snelweg|
+          houseno         = |21|
+          postalcode      = |1264 XX|
+          city            = |Bussum|
+          country         = |NL|
+          locationid      = 9001
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat
+          numberoftickets = 6
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 3
+          firstname       = |Freek|
+          lastname        = |Snoeitje|
+          street          = |Straatweg|
+          houseno         = |148a|
+          postalcode      = |1010 SW|
+          city            = |Amsteldam|
+          country         = |NL|
+          locationid      = 9001
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat2
+          numberoftickets = 2
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+        )
+    ).
+    INSERT zre_dt_bookings FROM TABLE @booking_list.
+
+  ENDMETHOD.
+
 
   METHOD fill_location.
     GET TIME STAMP FIELD DATA(lv_createdat).
@@ -230,5 +305,6 @@ CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
 
   METHOD if_oo_adt_classrun~main.
     fill_location(  ).
+    fill_bookings(  ).
   ENDMETHOD.
 ENDCLASS.

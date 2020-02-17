@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition'
+define service ZREBB_SERVICE_DEFINITION {
+  expose Z00BB_CDS_BOOKINGS as bookings;
+  expose Z00BB_CDS_LOCATION as location;
+}

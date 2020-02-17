@@ -1,0 +1,22 @@
+@AbapCatalog.sqlViewName: 'Z00BBCB'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Bookings'
+define view Z00BB_CDS_BOOKINGS as select from zre_dt_bookings {
+    //zre_dt_bookings
+    key bookingid,
+    firstname,
+    lastname,
+    street,
+    houseno,
+    postalcode,
+    city,
+    country,
+    locationid,
+    bookingdate,
+    visitdate,
+    numberoftickets,
+    reviewrate,
+    reviewcomment
+}

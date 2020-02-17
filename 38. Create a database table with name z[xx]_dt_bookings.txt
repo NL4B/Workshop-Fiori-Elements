@@ -1,0 +1,23 @@
+@EndUserText.label : 'Bookings'
+@AbapCatalog.enhancementCategory : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #LIMITED
+define table zre_dt_bookings {
+  key client      : abap.clnt not null;
+  key bookingid   : abap.numc(10) not null;
+  firstname       : abap.char(80);
+  lastname        : abap.char(80);
+  street          : abap.char(40);
+  houseno         : abap.char(10);
+  postalcode      : abap.char(10);
+  city            : abap.char(30);
+  country         : abap.char(2);
+  locationid      : abap.numc(4);
+  bookingdate     : timestampl;
+  visitdate       : timestampl;
+  numberoftickets : abap.int1;
+  reviewrate      : abap.int1;
+  reviewcomment   : abap.sstring(1333);
+
+}

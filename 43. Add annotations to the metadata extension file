@@ -1,0 +1,20 @@
+@Metadata.layer: #CORE
+annotate view Z00BB_CDS_BOOKINGS
+    with 
+{
+    @EndUserText.label: 'Date Visit'
+    @UI.lineItem:[{ position:10 }] 
+    visitdate;
+    @EndUserText.label: 'First Name'
+    @UI.lineItem:[{ position:20 }] 
+    firstname;
+    @EndUserText.label: 'Last Name'
+    @UI.lineItem:[{ position:30 }] 
+    lastname;
+    @EndUserText.label: 'Country'
+    @UI.lineItem:[{ position:40 }] 
+    country;
+    @EndUserText.label: 'Tickets'
+    @UI.lineItem:[{ position:50 }] 
+    numberoftickets;    
+}

@@ -1,0 +1,118 @@
+@AbapCatalog.sqlViewName: 'Z00BBCL'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Locations'
+
+@Search.searchable: true
+
+@UI.headerInfo.typeName: 'Location'
+@UI.headerInfo.typeNamePlural: 'Location List'
+
+@UI.headerInfo.imageUrl: 'logo_url'
+@UI.headerInfo.typeImageUrl: 'sap-icon://theater'
+
+@UI.headerInfo.description.value: 'attraction'
+@UI.headerInfo.title.value: 'location'
+
+
+define root view Z00BB_CDS_LOCATION
+  as select from zre_dt_location
+{
+
+      @UI.facet: [{
+        purpose: #HEADER,
+        position: 30,
+        importance: #HIGH ,
+        type: #DATAPOINT_REFERENCE,
+        targetQualifier: 'rating',
+        label: 'Rating Facet'
+       },{
+         purpose: #HEADER,
+         position: 10,
+         importance: #HIGH ,
+         type: #FIELDGROUP_REFERENCE,
+         targetQualifier: 'HeaderDescription',
+         label: 'Description'
+       }]
+
+      @UI.hidden: true
+  key locationid,
+      @EndUserText.label: 'Location'
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 10, importance: #HIGH }]
+      location,
+      @EndUserText.label: 'Street'
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 20, importance: #MEDIUM }]
+      street,
+      @EndUserText.label: 'No'
+      @UI.lineitem: [{position: 30, importance: #MEDIUM }]
+      houseno,
+      @EndUserText.label: 'ZipCode'
+      @UI.lineitem: [{position: 40, importance: #LOW }]
+      postalcode,
+      @UI.lineitem: [{position: 50, importance: #MEDIUM }]
+      @EndUserText.label: 'City'
+      city,
+      @Consumption.valueHelpDefinition: [{
+              entity: {
+                  name: 'Z00BB_CDS_AREA_VH' ,
+                  element: 'area'
+              },
+              label: 'Default Valuehelp for Area'
+            }]
+      @EndUserText.label: 'Area'
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 60, importance: #LOW }]
+      @UI.selectionField : [{position: 10 }]
+      area,
+      @EndUserText.label: 'Attraction'
+      @UI.selectionField : [{position: 20 }]
+      attraction,
+      @EndUserText.label: 'Phone'
+      @UI.lineitem: [{position: 70, importance: #HIGH }]
+      phone,
+      latitude,
+      longitude,
+
+      @EndUserText.label: 'Rating'
+      @UI.dataPoint:{
+       visualization: #RATING,
+       targetValue: 6
+      }
+      @UI.lineitem: [{position: 80, importance: #LOW, type: #AS_DATAPOINT}]
+      rating,
+
+      @EndUserText.label: 'Occupied Seats'
+      @UI.lineitem: [{position:90, importance: #LOW, type:#AS_DATAPOINT}]
+      @UI.dataPoint: {targetValueElement:'seats_total', visualization:#PROGRESS}
+      cast (seats_booked as abap.int1) as seats_booked,
+      cast (seats_total as abap.int1)  as seats_total,
+
+      @UI.lineitem: [{position:75, importance: #LOW, type: #WITH_URL, url: 'website' }]
+      @EndUserText.label: 'Link'
+      'website'                        as gotowebsite,
+
+      @UI.hidden: true
+      website,
+
+      @UI.fieldGroup:[{
+        qualifier: 'HeaderDescription'
+      }]
+      @UI.multiLineText: true
+      @UI.hidden: false
+      description,
+
+      @UI.hidden: false
+      logo_url,
+
+      @UI.hidden: true
+      changedat,
+      @UI.hidden: true
+      changedby,
+      @UI.hidden: true
+      createdat,
+      @UI.hidden: true
+      createdby
+}

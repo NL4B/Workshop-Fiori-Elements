@@ -1,0 +1,180 @@
+@AbapCatalog.sqlViewName: 'Z00BBCL'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Locations'
+
+@Search.searchable: true
+
+@UI.headerInfo.typeName: 'Location'
+@UI.headerInfo.typeNamePlural: 'Location List'
+
+@UI.headerInfo.imageUrl: 'logo_url'
+@UI.headerInfo.typeImageUrl: 'sap-icon://theater'
+
+@UI.headerInfo.description.value: 'attraction'
+@UI.headerInfo.title.value: 'location'
+
+
+define root view Z00BB_CDS_LOCATION
+  as select from zre_dt_location
+{
+
+      @UI.facet: [{
+         purpose: #HEADER,
+         position: 30,
+         importance: #HIGH ,
+         type: #DATAPOINT_REFERENCE,
+         targetQualifier: 'rating',
+         label: 'Rating Facet'
+       },{
+         purpose: #HEADER,
+         position: 10,
+         importance: #HIGH ,
+         type: #FIELDGROUP_REFERENCE,
+         targetQualifier: 'HeaderDescription',
+         label: 'Description'
+       },{
+         id: 'GeneralInformation',
+         label : 'General info',
+         isSummary: true,
+         type: #COLLECTION
+       },{
+         parentId: 'GeneralInformation',
+         id : 'GeneralInfo',
+         purpose : #STANDARD,
+         type : #IDENTIFICATION_REFERENCE,
+         label : 'General info',
+         position : 10
+       },{
+         id : 'BookingInfoFacet',
+         purpose : #STANDARD,
+         type : #FIELDGROUP_REFERENCE,
+         label : 'Booking Info',
+         targetQualifier: 'BookingInfo',
+         position : 20
+       },{
+         parentId: 'GeneralInformation',
+         id : 'MoreInfoFacet',
+         purpose : #STANDARD,
+         type : #FIELDGROUP_REFERENCE,
+         label : 'More Info',
+         targetQualifier: 'MoreInfo',
+         position : 30
+       },{
+         id : 'GeoInfoFacet',
+         purpose : #STANDARD,
+         type : #FIELDGROUP_REFERENCE,
+         label : 'Geolocation',
+         targetQualifier: 'GeoInfo',
+         position : 40
+       }]
+
+
+
+      @UI.hidden: true
+  key locationid,
+      @EndUserText.label: 'Location'
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 10, importance: #HIGH }]
+      @UI.identification:[ { position: 10} ]
+      location,
+      @EndUserText.label: 'Street'
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 20, importance: #MEDIUM }]
+      @UI.identification:[ { position: 20} ]
+      street,
+      @EndUserText.label: 'No'
+      @UI.lineitem: [{position: 30, importance: #MEDIUM }]
+      @UI.identification:[ { position: 30} ]
+      houseno,
+      @EndUserText.label: 'ZipCode'
+      @UI.lineitem: [{position: 40, importance: #LOW }]
+      @UI.identification:[ { position: 40} ]
+      postalcode,
+      @UI.lineitem: [{position: 50, importance: #MEDIUM }]
+      @UI.identification:[ { position: 50} ]
+      @EndUserText.label: 'City'
+      city,
+      @Consumption.valueHelpDefinition: [{
+                      entity: {
+                          name: 'Z00BB_CDS_AREA_VH' ,
+                          element: 'area'
+                      },
+                      label: 'Default Valuehelp for Area'
+                    }]
+      @EndUserText.label: 'Area'
+      @Search.defaultSearchElement: true
+      @UI.lineitem: [{position: 60, importance: #LOW }]
+      @UI.selectionField : [{position: 10 }]
+      @UI.identification:[ { position: 60} ]
+      area,
+      @EndUserText.label: 'Attraction'
+      @UI.selectionField : [{position: 20 }]
+      @UI.fieldgroup:[{ qualifier:'MoreInfo', position:10}]
+      attraction,
+      @EndUserText.label: 'Phone'
+      @UI.lineitem: [{position: 70, importance: #HIGH }]
+      @UI.fieldgroup:[{ qualifier:'MoreInfo', position:20}]
+      phone,
+      @EndUserText.label: 'Latitude'
+      @UI.fieldgroup:[{ qualifier:'GeoInfo', position:10}]
+      latitude,
+      @EndUserText.label: 'Longitude'
+      @UI.fieldgroup:[{ qualifier:'GeoInfo', position:20}]
+      longitude,
+
+      @EndUserText.label: 'Rating'
+      @UI.dataPoint:{
+       visualization: #RATING,
+       targetValue: 6
+      }
+      @UI.lineitem: [{position: 80, importance: #LOW, type: #AS_DATAPOINT}]
+      rating,
+
+      @EndUserText.label: 'Occupied Seats'
+      @UI.lineitem: [{position:90, importance: #LOW, type:#AS_DATAPOINT}]
+      @UI.dataPoint: {targetValueElement:'seats_total', visualization:#PROGRESS}
+      @UI.fieldgroup:[{ qualifier:'BookingInfo', position:10}]
+      cast (seats_booked as abap.int1) as seats_booked,
+      @UI.fieldgroup:[{ qualifier:'BookingInfo', position:20}]
+      @EndUserText.label: 'Max seats'
+      cast (seats_total as abap.int1)  as seats_total,
+
+      @UI.lineitem: [{position:75, importance: #LOW, type: #WITH_URL, url: 'website' }]
+      @EndUserText.label: 'Link'
+      'website'                        as gotowebsite,
+
+      @UI.fieldgroup:[{ qualifier:'MoreInfo', position:30}]
+      @EndUserText.label: 'Website URL'
+      @UI.hidden: true
+      website,
+
+      @UI.hidden: false
+      @EndUserText.label: 'Ticket price'
+      @UI.fieldgroup:[{ qualifier:'BookingInfo', position:30}]
+      @Semantics.amount.currencyCode: 'Currency'
+      ticketprice,
+      @Semantics.currencyCode: true
+      @UI.hidden: false
+      currency,
+
+      @UI.fieldGroup:[{
+        qualifier: 'HeaderDescription'
+      }]
+      @UI.multiLineText: true
+      @UI.hidden: false
+      description,
+
+      @UI.hidden: false
+      logo_url,
+
+      @UI.hidden: true
+      changedat,
+      @UI.hidden: true
+      changedby,
+      @UI.hidden: true
+      createdat,
+      @UI.hidden: true
+      createdby
+}
