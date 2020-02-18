@@ -1,0 +1,12 @@
+managed; // implementation in class zbp_00bb_cds_location unique;
+
+define behavior for Z00BB_CDS_LOCATION //alias <alias_name>
+//persistent table <???>
+//lock master
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+}

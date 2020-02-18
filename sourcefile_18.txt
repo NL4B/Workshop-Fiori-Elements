@@ -1,0 +1,236 @@
+CLASS z[xx]bb_cl_fill_table_data DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+    CLASS-METHODS fill_location.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS z[xx]bb_cl_fill_table_data IMPLEMENTATION.
+
+
+
+  METHOD fill_location.
+    GET TIME STAMP FIELD DATA(lv_createdat).
+    TYPES t_location_list       TYPE TABLE OF z[xx]_dt_location   WITH EMPTY KEY.
+    DELETE FROM z[xx]_dt_location.
+    DATA(location_list) = VALUE t_location_list(
+*      (
+*        locationid  = 9001
+*        location    = |Sportpark Oostermeent - Voetbal|
+*        street      = |Hendrik Smitlaan|
+*        houseno     = |6|
+*        postalcode  = |1261 VA|
+*        city        = |BLARICUM|
+*        area        = |Blaricum-Dorp|
+*        phone       = |035-5386098|
+*        latitude    = CONV f( |52.27408| )
+*        longitude   = CONV f( |5.25773| )
+*      )
+      (
+        locationid   = 9001
+        location     = |Rijksmuseum|
+        street       = |Museumstraat|
+        houseno      = |1|
+        postalcode   = |1071 XX|
+        city         = |Amsterdam|
+        area         = |Amsterdam City|
+        phone        = |020-6747000|
+        attraction   = |Museum|
+        website      = |https://www.rijksmuseum.nl/en|
+        logo_url     = |https://cdn.worldvectorlogo.com/logos/rijksmuseum.svg|
+        description  = |The Rijksmuseum is one of Amsterdam’s grandest and most popular museums. | &&
+                       |Its vast collection showcases iconic art and a wide variety of artefacts that reflect more than 800 years of Dutch and global history, | &&
+                       |including jaw dropping paintings by the likes of Rembrandt, Van Gogh and countless more Dutch greats.|
+        latitude     = CONV f( |52.360024| )
+        longitude    = CONV f( |4.885219| )
+        ticketprice  = CONV f( |19.00| )
+        currency     = |EUR|
+        seats_total  = 120
+        seats_booked = 20
+        seats_unit   = |PC|
+        rating       = CONV f( |5.00| )
+        changedat    = lv_createdat
+        changedby    = sy-uname
+        createdat    = lv_createdat
+        createdby    = sy-uname
+      )
+      (
+        locationid   = 9002
+        location     = |Keukenhof, Garden of Europe|
+        street       = |Stationsweg|
+        houseno      = |166A|
+        postalcode   = |2161 AM|
+        city         = |Lisse|
+        area         = |Amsterdam Beach|
+        phone        = |0252-465 555|
+        attraction   = |Botanical garden|
+        website      = |keukenhof.nl|
+        logo_url     = |https://cdn.worldvectorlogo.com/logos/keukenhof.svg|
+        description  = |The Keukenhof in Lisse is the world’s largest flower garden. The park is almost 32 hectares filled with 7 million tulips, hyacinths and daffodils. | &&
+                       |Enjoy the colors and fragrances in this unique park|
+        latitude     = CONV f( |52.268308| )
+        longitude    = CONV f( |4.550096| )
+        ticketprice  = CONV f( |17.50| )
+        currency     = |EUR|
+        seats_total  = 220
+        seats_booked = 40
+        seats_unit   = |PC|
+        rating       = CONV f( |3.50| )
+        changedat    = lv_createdat
+        changedby    = sy-uname
+        createdat    = lv_createdat
+        createdby    = sy-uname
+      )
+      (
+        locationid   = 9003
+        location     = |Anne Frank House|
+        street       = |Westermarkt|
+        houseno      = |20|
+        postalcode   = |1016 GV|
+        city         = |Amsterdam|
+        area         = |Amsterdam City|
+        phone        = |020-5567105|
+        attraction   = |Museum|
+        website      = |annefrank.org|
+*        logo_url     = |https://www.bankgiroloterij.nl/upload_mm/youtubeelement3/d/8/previewImage727672.JPG|
+        description  = |Anne Frank is one of Amsterdam’s most well known former residents. | &&
+                       |The Anne Frank House at Prinsengracht 263 in Amsterdam is where she lived in hiding with her family for more than two years during World War II. | &&
+                       |Now converted into a museum it contains a sobering exhibition about the persecution of the Jews during the war, as well as discrimination in general.|
+        latitude     = CONV f( |52.375033| )
+        longitude    = CONV f( |4.884066| )
+        ticketprice  = CONV f( |10.50| )
+        currency     = |EUR|
+        seats_total  = 120
+        seats_booked = 43
+        seats_unit   = |PC|
+        rating       = CONV f( |4.20| )
+        changedat    = lv_createdat
+        changedby    = sy-uname
+        createdat    = lv_createdat
+        createdby    = sy-uname
+      )
+      (
+        locationid   = 9004
+        location     = |Van Gogh Museum|
+        street       = |Museumplein|
+        houseno      = |6|
+        postalcode   = |1071 DJ|
+        city         = |Amsterdam|
+        area         = |Amsterdam City|
+        phone        = |020-5705200|
+        attraction   = |Museum|
+        website      = |https://www.vangoghmuseum.nl/en|
+        logo_url     = |https://www.vangoghmuseum.nl/static/img/logo-vangogh-museum.png|
+        description  = |The Van Gogh Museum in Amsterdam is home to the world’s largest collection of artworks by Vincent van Gogh. | &&
+                       |The museum’s ideal location at the heart of the Dutch capital, combined with outstanding exhibitions and enthralling stories about Van Gogh, | &&
+                       |provides a unique context for special events.|
+        latitude     = CONV f( |52.358423| )
+        longitude    = CONV f( |4.881070| )
+        ticketprice  = CONV f( |19.00| )
+        currency     = |EUR|
+        seats_total  = 120
+        seats_booked = 43
+        seats_unit   = |PC|
+        rating       = CONV f( |4.60| )
+        changedat    = lv_createdat
+        changedby    = sy-uname
+        createdat    = lv_createdat
+        createdby    = sy-uname
+      )
+      (
+        locationid   = 9005
+        location     = |Stedelijk Museum Amsterdam|
+        street       = |Museumplein|
+        houseno      = |10|
+        postalcode   = |1071 DJ|
+        city         = |Amsterdam|
+        area         = |Amsterdam City|
+        phone        = |020-5732911|
+        attraction   = |Museum|
+        website      = |https://www.stedelijk.nl/en|
+        logo_url     = |https://s3-eu-west-1.amazonaws.com/production-static-stedelijk/images/archief/nieuwsberichten/huisstijl/logo-strepen.png|
+        description  = |Located on Museumplein, the cultural heart of the city, the Stedelijk Museum Amsterdam is the Netherlands’ largest museum for modern art and design. | &&
+                       |As an Amsterdam institution with international allure, the museum is an outstanding location for all sorts of events.|
+        latitude     = CONV f( |52.358037| )
+        longitude    = CONV f( |4.879755| )
+        ticketprice  = CONV f( |18.50| )
+        currency     = |EUR|
+        seats_total  = 120
+        seats_booked = 43
+        seats_unit   = |PC|
+        rating       = CONV f( |4.90| )
+        changedat    = lv_createdat
+        changedby    = sy-uname
+        createdat    = lv_createdat
+        createdby    = sy-uname
+      )
+      (
+        locationid   = 9006
+        location     = |Netherlands Institute for Sound and Vision|
+        street       = |Media Parkboulevard|
+        houseno      = |1|
+        postalcode   = |1217 WE|
+        city         = |Hilversum|
+        area         = |Amsterdam Castles & Gardens|
+        phone        = |035-6773434|
+        attraction   = |Museum|
+        website      = |https://www.beeldengeluid.nl/en|
+        logo_url     = |https://www.mupop.net/wp-content/uploads/2016/12/sound-and-vision_logo.png|
+        description  = |Collecting, managing and educating about an impressive collection of the Netherlands’ audiovisual heritage, | &&
+                       |the Netherlands Institute for Sound and Vision is an important player when it comes to the accessibility of archived recordings.|
+        latitude     = CONV f( |52.235466| )
+        longitude    = CONV f( |5.173060| )
+        ticketprice  = CONV f( |17.00| )
+        currency     = |EUR|
+        seats_total  = 120
+        seats_booked = 43
+        seats_unit   = |PC|
+        rating       = CONV f( |3.70| )
+        changedat    = lv_createdat
+        changedby    = sy-uname
+        createdat    = lv_createdat
+        createdby    = sy-uname
+      )
+      (
+        locationid   = 9007
+        location     = |Amsterdam Castle Muiderslot|
+        street       = |Herengracht|
+        houseno      = |1|
+        postalcode   = |1398 AA|
+        city         = |Muiden|
+        area         = |Amsterdam Castles & Gardens|
+        phone        = |035-6773434|
+        attraction   = |Museum|
+        website      = |https://www.muiderslot.nl/en|
+        logo_url     = |https://www.muiderslot.nl/wp-content/themes/muiderslot/images/muiderslot-logo.png|
+        description  = |Located in Muiden to the east of Amsterdam, Amsterdam Castle Muiderslot’s legacy dates all the way back to 1280 when Count Floris V commissioned the construction of a stone fortress. | &&
+                       |Part of the UNESCO-listed Defence Line of Amsterdam, the enchanting castle and surrounding gardens are a sure-fire hit with visitors of all ages.|
+        latitude     = CONV f( |52.334312| )
+        longitude    = CONV f( |5.071558| )
+        ticketprice  = CONV f( |15.50| )
+        currency     = |EUR|
+        seats_total  = 120
+        seats_booked = 43
+        seats_unit   = |PC|
+        rating       = CONV f( |4.20| )
+        changedat    = lv_createdat
+        changedby    = sy-uname
+        createdat    = lv_createdat
+        createdby    = sy-uname
+      )
+    ).
+    INSERT z[xx]_dt_location FROM TABLE @location_list.
+  ENDMETHOD.
+
+
+  METHOD if_oo_adt_classrun~main.
+    fill_location(  ).
+  ENDMETHOD.
+ENDCLASS.
