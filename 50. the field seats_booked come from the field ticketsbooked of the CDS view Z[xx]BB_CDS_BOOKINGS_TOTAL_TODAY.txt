@@ -20,6 +20,8 @@ define root view Z00BB_CDS_LOCATION
   as select from zre_dt_location
   association [0..*] to Z00BB_CDS_BOOKINGS as _bookings
                      on $projection.locationid = _bookings.locationid
+  association [0..1] to Z00BB_CDS_BOOKINGS_TOTAL_TODAY as _bookings_total
+                     on $projection.locationid = _bookings_total.locationid                     
 {
 
       @UI.facet: [{
@@ -147,7 +149,8 @@ define root view Z00BB_CDS_LOCATION
       @UI.dataPoint: {targetValueElement:'seats_total', visualization:#PROGRESS}
       @EndUserText.label: 'Occupied Seats'
       @UI.fieldgroup:[{ qualifier:'BookingInfo', position:10}]
-      cast (seats_booked as abap.int1) as seats_booked,
+      _bookings_total.ticketsbooked as seats_booked,
+//      cast (seats_booked as abap.int1) as seats_booked,
  
       @UI.fieldgroup:[{ qualifier:'BookingInfo', position:20}]
       @EndUserText.label: 'Max seats'

@@ -1,0 +1,60 @@
+@AbapCatalog.sqlViewName: 'Z00BBCBC'
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Bookings Cube'
+
+
+@UI.chart:[{
+    qualifier:'FilterTicketsByBooking',
+    chartType: #COLUMN,
+    measures:[ 'ticketsbooked' ],
+    dimensions: ['dateofvisit']
+}]
+
+
+/*+[hideWarning] { "IDS" : [ "KEY_CHECK" ]  } */
+define view Z00BB_CDS_BOOKINGS_CUBE
+  as select from Z00BB_CDS_BOOKINGS
+{
+      /** KEY **/
+  key concat(concat( locationid,bookingid ), cast(dateofvisit as abap.char(10) )) as keyId,
+      /** DIMENSIONS **/
+      bookingid,
+      locationid,
+      @EndUserText.label: 'First name'
+      firstname,
+      @EndUserText.label: 'Last name'
+      lastname,
+      @EndUserText.label: 'Street'
+      street,
+      @EndUserText.label: 'No'
+      houseno,
+      @EndUserText.label: 'Postalcode'
+      postalcode,
+      @EndUserText.label: 'City'
+      city,
+      @EndUserText.label: 'Country'
+      country,
+
+      @EndUserText.label: 'Date of visit'
+      dateofvisit,
+      @EndUserText.label: 'Date of booking'
+      dateofbooking,
+
+      /** MEASURES **/
+      @EndUserText.label: 'Unique locations'
+      @Aggregation.referenceElement: ['locationid']
+      @Aggregation.default: #COUNT_DISTINCT
+      cast( 1 as abap.int4 )                                                     as DistinctLocations,
+
+      @EndUserText.label: 'Tickets booked'
+      @Aggregation.referenceElement: ['ticketsbooked']
+      @Aggregation.default: #SUM
+      numberoftickets                                                            as ticketsbooked,
+
+      @EndUserText.label: 'Review Rate'
+      @Aggregation.referenceElement: ['reviewrate']
+      @Aggregation.default: #AVG
+      reviewrate
+}
+

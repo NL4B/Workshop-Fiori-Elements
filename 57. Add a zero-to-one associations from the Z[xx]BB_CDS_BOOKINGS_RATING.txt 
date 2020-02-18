@@ -16,10 +16,19 @@
 @UI.headerInfo.title.value: 'location'
 
 
+
+
 define root view Z00BB_CDS_LOCATION
   as select from zre_dt_location
   association [0..*] to Z00BB_CDS_BOOKINGS as _bookings
                      on $projection.locationid = _bookings.locationid
+  
+  association [0..*] to Z00BB_CDS_BOOKINGS_CUBE as _bookingscube
+                     on $projection.locationid = _bookingscube.locationid                 
+  association [0..1] to Z00BB_CDS_BOOKINGS_TOTAL_TODAY as _bookings_total
+                     on $projection.locationid = _bookings_total.locationid 
+  association [0..1] to Z00BB_CDS_BOOKINGS_RATING as _bookings_rating
+                     on $projection.locationid = _bookings_rating.locationid 
 {
 
       @UI.facet: [{
@@ -55,7 +64,17 @@ define root view Z00BB_CDS_LOCATION
          label : 'Booking Info',
          targetQualifier: 'BookingInfo',
          position : 20
-       },{
+       },
+       {
+         id : 'BookingChartFacet',
+         purpose : #STANDARD,
+         type : #CHART_REFERENCE,
+         label : 'Booking forecast',
+         targetQualifier: 'FilterTicketsByBooking',
+         targetElement: '_bookingscube',
+         position : 22
+       },
+       {
          id : 'BookingTableFacet',
          purpose : #STANDARD,
          type : #LINEITEM_REFERENCE,
@@ -141,13 +160,15 @@ define root view Z00BB_CDS_LOCATION
        targetValue: 6
       }
       @UI.lineitem: [{position: 80, importance: #LOW, type: #AS_DATAPOINT}]
-      rating,
+//    rating,
+      _bookings_rating.reviewrate as rating,
 
       @UI.lineitem: [{position:90, importance: #LOW, type:#AS_DATAPOINT}]
       @UI.dataPoint: {targetValueElement:'seats_total', visualization:#PROGRESS}
       @EndUserText.label: 'Occupied Seats'
       @UI.fieldgroup:[{ qualifier:'BookingInfo', position:10}]
-      cast (seats_booked as abap.int1) as seats_booked,
+      _bookings_total.ticketsbooked as seats_booked,
+//    cast (seats_booked as abap.int1) as seats_booked,
  
       @UI.fieldgroup:[{ qualifier:'BookingInfo', position:20}]
       @EndUserText.label: 'Max seats'
@@ -190,5 +211,6 @@ define root view Z00BB_CDS_LOCATION
       @UI.hidden: true
       createdby,
 
-      _bookings
+      _bookings,
+      _bookingscube
 }

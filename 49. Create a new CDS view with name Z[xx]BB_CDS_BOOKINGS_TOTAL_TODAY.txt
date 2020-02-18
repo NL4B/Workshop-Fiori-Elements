@@ -1,0 +1,20 @@
+@AbapCatalog.sqlViewName: 'Z00BBCBTT'
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Total Bookings Today'
+
+/*+[hideWarning] { "IDS" : [ "KEY_CHECK" ]  } */
+define view Z00BB_CDS_BOOKINGS_TOTAL_TODAY
+  as select distinct from Z00BB_CDS_BOOKINGS
+{
+  currentdate,
+  locationid,
+
+  sum(numberoftickets) as ticketsbooked
+}
+where
+  dateofvisit = currentdate
+group by
+  currentdate,
+  locationid
+

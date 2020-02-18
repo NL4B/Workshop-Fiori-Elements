@@ -1,0 +1,29 @@
+@Metadata.layer: #CORE
+
+annotate view Z00BB_CDS_BOOKINGS
+    with 
+{
+    @EndUserText.label: 'Date Visit'
+    @UI.lineItem:[{ position:10 }] 
+    visitdate;
+    @EndUserText.label: 'First Name'
+    @UI.lineItem:[{ position:20 },{ position:10, qualifier:'rating' }]
+    firstname;
+    @EndUserText.label: 'Last Name'
+    @UI.lineItem:[{ position:30 },{ position:20, qualifier:'rating' }]
+    lastname;
+    @EndUserText.label: 'Country'
+    @UI.lineItem:[{ position:40 }] 
+    country;
+    @EndUserText.label: 'Tickets'
+    @UI.lineItem:[{ position:50 }] 
+    numberoftickets;    
+     @EndUserText.label: 'Rating'
+    @UI.lineItem:[{ position:40, qualifier:'rating' }]
+    reviewrate;
+    @EndUserText.label: 'Comments'
+    @UI.multiLineText:true
+    @UI.lineItem:[{ position:50 , qualifier:'rating' }] 
+    reviewcomment;
+    
+}

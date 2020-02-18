@@ -1,0 +1,15 @@
+@AbapCatalog.sqlViewName: 'Z00BBCR'
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Bookings ratings'
+
+
+/*+[hideWarning] { "IDS" : [ "KEY_CHECK" ]  } */
+define view Z00BB_CDS_BOOKINGS_RATING 
+  as select distinct from Z00BB_CDS_BOOKINGS
+{
+  locationid,
+  avg(reviewrate) as reviewrate
+}
+group by
+  locationid
