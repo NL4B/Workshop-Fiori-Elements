@@ -16,10 +16,12 @@ define root view Z00BB_CDS_LOCATION
   key locationid,
       @EndUserText.label: 'Location'
       @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
       @UI.lineitem: [{position: 10, importance: #HIGH }]
       location,
       @EndUserText.label: 'Street'
       @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
       @UI.lineitem: [{position: 20, importance: #MEDIUM }]
       street,
       @EndUserText.label: 'No'
@@ -32,6 +34,7 @@ define root view Z00BB_CDS_LOCATION
       city,
       @EndUserText.label: 'Area'
       @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
       @UI.lineitem: [{position: 60, importance: #LOW }]
       area,
       @EndUserText.label: 'Phone'

@@ -16,15 +16,18 @@ define root view Z00BB_CDS_LOCATION
       @UI.lineitem: [{position: 10}]
   key locationid,
       @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
       @UI.lineitem: [{position: 20}]
       location,
       @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
       @UI.lineitem: [{position: 30}]
       street,
       houseno,
       postalcode,
       city,
       @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
       @UI.lineitem: [{position: 40}]
       area,
       phone,

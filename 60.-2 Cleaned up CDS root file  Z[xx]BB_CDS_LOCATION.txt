@@ -1,0 +1,45 @@
+@AbapCatalog.sqlViewName: 'Z00BBCL'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+
+@Metadata.allowExtensions: true
+
+define root view Z00BB_CDS_LOCATION
+  as select from zre_dt_location
+  association [0..*] to Z00BB_CDS_BOOKINGS             as _bookings        on $projection.locationid = _bookings.locationid
+  association [0..*] to Z00BB_CDS_BOOKINGS_CUBE        as _bookingscube    on $projection.locationid = _bookingscube.locationid
+  association [0..1] to Z00BB_CDS_BOOKINGS_TOTAL_TODAY as _bookings_total  on $projection.locationid = _bookings_total.locationid
+  association [0..1] to Z00BB_CDS_BOOKINGS_RATING      as _bookings_rating on $projection.locationid = _bookings_rating.locationid
+{
+
+  key locationid,
+      location,
+      street,
+      houseno,
+      postalcode,
+      city,
+      area,
+      attraction,
+      phone,
+      latitude,
+      longitude,
+      _bookings_rating.reviewrate     as rating,
+      _bookings_total.ticketsbooked   as seats_booked,
+      cast (seats_total as abap.int1) as seats_total,
+      'website'                       as gotowebsite,
+      website,
+      @Semantics.amount.currencyCode: 'Currency'
+      ticketprice,
+      @Semantics.currencyCode: true
+      currency,
+      description,
+      logo_url,
+      changedat,
+      changedby,
+      createdat,
+      createdby,
+
+      _bookings,
+      _bookingscube
+}
