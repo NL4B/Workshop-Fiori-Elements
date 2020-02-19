@@ -88,7 +88,8 @@ annotate view Z00BB_CDS_LOCATION with
      hidden: false
    }]
 
-  @UI.hidden: true
+  @EndUserText.label: 'Location Id'
+  @UI.fieldGroup:[{ qualifier:'MoreInfo', position:5}]
   locationid;
   @EndUserText.label: 'Location'
   @Search.defaultSearchElement: true

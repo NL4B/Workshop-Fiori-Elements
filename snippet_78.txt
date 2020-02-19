@@ -1,0 +1,34 @@
+  METHOD DeterminationForNewRecord.
+
+    DATA lt_update TYPE  TABLE FOR UPDATE z[xx]bb_cds_location.
+
+    READ ENTITIES OF z[xx]bb_cds_location
+        ENTITY location
+        FROM VALUE #( FOR <root_key> IN keys ( %key = <root_key> ) )
+        RESULT DATA(lt_location).
+
+    MOVE-CORRESPONDING  lt_location TO lt_update.
+    SELECT MAX( locationid ) FROM z[xx]_dt_location INTO @DATA(locationid).
+    LOOP AT lt_update ASSIGNING FIELD-SYMBOL(<location>).
+      IF <location>-description IS INITIAL.
+        <location>-description = |No description available|.
+        <location>-%control-description   = cl_abap_behv=>flag_changed.
+      ENDIF.
+
+      IF <location>-rating IS INITIAL.
+        <location>-rating = 5.
+        <location>-%control-rating   = cl_abap_behv=>flag_changed.
+      ENDIF.
+
+      IF <location>-seats_unit IS INITIAL.
+        <location>-seats_unit = |ST|.
+        <location>-%control-seats_unit   = cl_abap_behv=>flag_changed.
+      ENDIF.
+
+    ENDLOOP.
+
+    MODIFY ENTITIES OF z[xx]bb_cds_location  IN LOCAL MODE
+                ENTITY location
+                       UPDATE FROM lt_update .
+
+  ENDMETHOD.

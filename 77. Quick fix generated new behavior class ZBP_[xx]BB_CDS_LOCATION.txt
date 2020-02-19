@@ -1,9 +1,6 @@
 CLASS lhc_location DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
 
-    METHODS DeterminationForChangedRecord FOR DETERMINATION location~DeterminationForChangedRecord
-      IMPORTING keys FOR location.
-
     METHODS DeterminationForNewRecord FOR DETERMINATION location~DeterminationForNewRecord
       IMPORTING keys FOR location.
 
@@ -13,9 +10,6 @@ CLASS lhc_location DEFINITION INHERITING FROM cl_abap_behavior_handler.
 ENDCLASS.
 
 CLASS lhc_location IMPLEMENTATION.
-
-  METHOD DeterminationForChangedRecord.
-  ENDMETHOD.
 
   METHOD DeterminationForNewRecord.
   ENDMETHOD.

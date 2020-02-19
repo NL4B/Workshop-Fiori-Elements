@@ -1,17 +1,15 @@
 managed implementation in class zbp_00bb_cds_location unique;
 
 define behavior for Z00BB_CDS_LOCATION alias location
-  persistent table ZRE_DT_LOCATION
+  persistent table Z00_DT_LOCATION
   lock master
 //authorization master ( instance )
 //etag master <field_name>
 {
-
-  determination DeterminationForNewRecord on save { create; }
-  determination DeterminationForChangedRecord on modify { field changedat, changedby; }
-
+  mapping for Z00_DT_LOCATION corresponding;  
   create;
   update;
   delete;
+
 
 }

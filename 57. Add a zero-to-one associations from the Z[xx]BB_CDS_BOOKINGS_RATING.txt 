@@ -36,7 +36,8 @@ define root view Z00BB_CDS_LOCATION
          position: 30,
          importance: #HIGH ,
          type: #DATAPOINT_REFERENCE,
-         targetQualifier: 'rating',
+//       targetQualifier: 'rating',
+         targetQualifier: 'reviewrate',
          label: 'Rating Facet'
        },{
          purpose: #HEADER,
@@ -164,7 +165,7 @@ define root view Z00BB_CDS_LOCATION
       }
       @UI.lineitem: [{position: 80, importance: #LOW, type: #AS_DATAPOINT}]
 //    rating,
-      _bookings_rating.reviewrate as rating,
+      _bookings_rating.reviewrate
 
       @UI.lineitem: [{position:90, importance: #LOW, type:#AS_DATAPOINT}]
       @UI.dataPoint: {targetValueElement:'seats_total', visualization:#PROGRESS}

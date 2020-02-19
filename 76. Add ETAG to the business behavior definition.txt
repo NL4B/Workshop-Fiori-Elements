@@ -1,17 +1,18 @@
 managed implementation in class zbp_00bb_cds_location unique;
 
 define behavior for Z00BB_CDS_LOCATION alias location
-  persistent table ZRE_DT_LOCATION
+  persistent table Z00_DT_LOCATION
   lock master
 //authorization master ( instance )
   etag master changedat
 {
+  mapping for Z00_DT_LOCATION corresponding;
 
-  field (readonly)  locationid, rating, seats_booked, changedat, changedby, createdat, createdby;
+  field (readonly)  reviewrate, rating, seats_unit, seats_booked, changedat, changedby, createdat, createdby;
   field (mandatory) street, houseno, postalcode, city, area, attraction, phone, website, ticketprice, currency, seats_total;
-  field (features : instance ) location;
+  field (features : instance ) locationid, location;
+
   determination DeterminationForNewRecord on save { create; }
-  determination DeterminationForChangedRecord on modify { field changedat, changedby; }
 
   create;
   update;
