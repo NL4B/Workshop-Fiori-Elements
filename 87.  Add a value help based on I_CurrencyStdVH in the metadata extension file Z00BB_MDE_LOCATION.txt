@@ -1,0 +1,209 @@
+@Metadata.layer: #CORE
+
+@EndUserText.label: 'Locations'
+@Search.searchable: true
+@UI.headerInfo.typeName: 'Location'
+@UI.headerInfo.typeNamePlural: 'Location List'
+@UI.headerInfo.imageUrl: 'logo_url'
+@UI.headerInfo.typeImageUrl: 'sap-icon://theater'
+@UI.headerInfo.description.value: 'attraction'
+@UI.headerInfo.title.value: 'location'
+annotate view Z00BB_CDS_LOCATION with
+{
+
+  @UI.facet: [
+     {
+     purpose: #HEADER,
+     position: 30,
+     importance: #HIGH ,
+     type: #DATAPOINT_REFERENCE,
+     targetQualifier: 'reviewrate',
+     label: 'Rating Facet'
+   },{
+     purpose: #HEADER,
+     position: 10,
+     importance: #HIGH ,
+     type: #FIELDGROUP_REFERENCE,
+     targetQualifier: 'HeaderDescription',
+     label: 'Description'
+   },{
+     id: 'GeneralInformation',
+     label : 'General info',
+     isSummary: true,
+     type: #COLLECTION
+   },{
+     parentId: 'GeneralInformation',
+     id : 'GeneralInfo',
+     purpose : #STANDARD,
+     type : #IDENTIFICATION_REFERENCE,
+     label : 'General info',
+     position : 10
+   },{
+     id : 'BookingInfoFacet',
+     purpose : #STANDARD,
+     type : #FIELDGROUP_REFERENCE,
+     label : 'Booking Info',
+     targetQualifier: 'BookingInfo',
+     position : 20
+   },{
+     id : 'BookingChartFacet',
+     purpose : #STANDARD,
+     type : #CHART_REFERENCE,
+     label : 'Booking forecast',
+     targetQualifier: 'FilterTicketsByBooking',
+     targetElement: '_bookingscube',
+     position : 22
+   },{
+     id : 'BookingTableFacet',
+     purpose : #STANDARD,
+     type : #LINEITEM_REFERENCE,
+     label : 'Bookings',
+     targetElement: '_bookings',
+     position : 25
+   },{
+     parentId: 'GeneralInformation',
+     id : 'MoreInfoFacet',
+     purpose : #STANDARD,
+     type : #FIELDGROUP_REFERENCE,
+     label : 'More Info',
+     targetQualifier: 'MoreInfo',
+     position : 30,
+     isPartOfPreview:false
+   },{
+     id : 'RatingTableFacet',
+     purpose : #STANDARD,
+     type : #LINEITEM_REFERENCE,
+     label : 'Reviews',
+     targetElement: '_bookings',
+     targetQualifier: 'rating',
+     position : 25
+   },{
+     id : 'GeoInfoFacet',
+     purpose : #STANDARD,
+     type : #FIELDGROUP_REFERENCE,
+     label : 'Geolocation',
+     targetQualifier: 'GeoInfo',
+     position : 40,
+     hidden: false
+   }]
+  @EndUserText.label: 'Location Id'
+  @UI.fieldGroup:[{ qualifier:'MoreInfo', position:5}]
+  locationid;
+  @EndUserText.label: 'Location'
+  @Search.defaultSearchElement: true
+  @Search.fuzzinessThreshold: 0.8
+  @UI.lineItem: [{position: 10, importance: #HIGH }]
+  @UI.identification:[ { position: 10} ]
+  location;
+
+  @EndUserText.label: 'Street'
+  @Search.defaultSearchElement: true
+    @Search.fuzzinessThreshold: 0.8
+  @UI.lineItem: [{position: 20, importance: #MEDIUM }]
+  @UI.identification:[ { position: 20} ]
+  street;
+  @EndUserText.label: 'No'
+  @UI.lineItem: [{position: 30, importance: #MEDIUM }]
+  @UI.identification:[ { position: 30} ]
+  houseno;
+  @EndUserText.label: 'ZipCode'
+  @UI.lineItem: [{position: 40, importance: #LOW }]
+  @UI.identification:[ { position: 40} ]
+  postalcode;
+  @UI.lineItem: [{position: 50, importance: #MEDIUM }]
+  @UI.identification:[ { position: 50} ]
+  @EndUserText.label: 'City'
+  city;
+  @Consumption.valueHelpDefinition: [{
+    entity: {
+        name: 'Z00BB_CDS_AREA_VH' ,
+        element: 'area'
+    },
+    label: 'Default Valuehelp for Area'
+  }]
+  @EndUserText.label: 'Area'
+  @Search.defaultSearchElement: true
+    @Search.fuzzinessThreshold: 0.8
+  @UI.lineItem: [{position: 60, importance: #LOW }]
+  @UI.selectionField : [{position: 10 }]
+  @UI.identification:[ { position: 60} ]
+  area;
+  @EndUserText.label: 'Attraction'
+  @UI.selectionField : [{position: 20 }]
+  @UI.fieldGroup:[{ qualifier:'MoreInfo', position:10}]
+  attraction;
+  @EndUserText.label: 'Phone'
+  @UI.lineItem: [{position: 70, importance: #HIGH }]
+  @UI.fieldGroup:[{ qualifier:'MoreInfo', position:20}]
+  phone;
+  @EndUserText.label: 'Latitude'
+  @UI.fieldGroup:[{ qualifier:'GeoInfo', position:10}]
+  latitude;
+  @EndUserText.label: 'Longitude'
+  @UI.fieldGroup:[{ qualifier:'GeoInfo', position:20}]
+  longitude;
+
+
+  @UI.dataPoint:{
+   visualization: #RATING,
+   targetValue: 6
+  }
+  @EndUserText.label: 'Rating'
+  @UI.lineItem: [{position: 80, importance: #LOW, type: #AS_DATAPOINT, label: 'Rating'}]
+  reviewrate;
+
+  @UI.lineItem: [{position:90, importance: #LOW, type:#AS_DATAPOINT, label: 'Occupied Seats'}]
+  @UI.dataPoint: {
+    targetValueElement:'seats_total', 
+    visualization:#PROGRESS
+  }
+  @EndUserText.label: 'Occupied Seats'
+  @UI.fieldGroup:[{ qualifier:'BookingInfo', position:10}]
+  seats_booked;
+
+  @UI.fieldGroup:[{ qualifier:'BookingInfo', position:20}]
+  @EndUserText.label: 'Max seats'
+  seats_total;
+
+  @UI.lineItem: [{position:75, importance: #LOW, type: #WITH_URL, url: 'website' }]
+  @EndUserText.label: 'Link'
+  gotowebsite;
+
+  @UI.hidden: false
+  @UI.fieldGroup:[{ qualifier:'MoreInfo', position:30}]
+  @EndUserText.label: 'Website URL'
+  website;
+
+  @UI.hidden: false
+  @EndUserText.label: 'Ticket price'
+  @UI.fieldGroup:[{ qualifier:'BookingInfo', position:30}]
+  ticketprice;
+    @Consumption.valueHelpDefinition: [{
+    entity: {
+        name: 'I_CurrencyStdVH' ,
+        element: 'Currency'
+    },
+    label: 'Default Valuehelp for Currency'
+  }]
+  @UI.hidden: false
+  currency;
+
+  @UI.fieldGroup:[{
+    qualifier: 'HeaderDescription'
+  }]
+  @UI.multiLineText: true
+  @UI.hidden: false
+  description;
+
+  @UI.hidden: false
+  logo_url;
+
+  @UI.hidden: true
+  changedat;
+  @UI.hidden: true
+  changedby;
+  @UI.hidden: true
+  createdat;
+  @UI.hidden: true
+  createdby;
+}

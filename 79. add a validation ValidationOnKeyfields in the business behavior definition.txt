@@ -14,7 +14,7 @@ define behavior for Z00BB_CDS_LOCATION alias location
 
   determination DeterminationForNewRecord on save { create; }
 
-  validation ValidationOnLocation on save  { field locationid; }
+  validation ValidationOnKeyfields on save  { field locationid; }
 
   create;
   update;

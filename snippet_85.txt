@@ -1,0 +1,207 @@
+  METHOD validationonaddress.
+    DATA: msg_text TYPE string.
+    READ ENTITIES OF z00bb_cds_location IN LOCAL MODE
+        ENTITY location
+        FROM VALUE #( FOR <root_key> IN keys ( locationid = <root_key>-locationid
+                                               %control = VALUE #(
+                                                    locationid = if_abap_behv=>mk-on
+                                                    street = if_abap_behv=>mk-on
+                                                    houseno = if_abap_behv=>mk-on
+                                                    postalcode = if_abap_behv=>mk-on
+                                                    city = if_abap_behv=>mk-on
+                                                    area = if_abap_behv=>mk-on
+                                               )
+                                             )
+                    ) RESULT DATA(lt_location).
+
+    LOOP AT lt_location ASSIGNING FIELD-SYMBOL(<location>).
+      IF <location>-street IS INITIAL.
+        msg_text = 'Street can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-street = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+      IF <location>-houseno IS INITIAL.
+        msg_text = 'House number can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-houseno = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+      IF <location>-postalcode IS INITIAL.
+        msg_text = 'Zipcode can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-postalcode = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+      IF <location>-city IS INITIAL.
+        msg_text = 'City can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-city = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+      IF <location>-area IS INITIAL.
+        msg_text = 'Area can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-area = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD validationonlocation.
+    DATA: msg_text TYPE string.
+    READ ENTITIES OF z00bb_cds_location IN LOCAL MODE
+        ENTITY location
+        FROM VALUE #( FOR <root_key> IN keys ( locationid = <root_key>-locationid
+                                               %control = VALUE #(
+                                                    locationid = if_abap_behv=>mk-on
+                                                    location = if_abap_behv=>mk-on
+                                                    attraction = if_abap_behv=>mk-on
+                                               )
+                                             )
+                    ) RESULT DATA(lt_location).
+
+    LOOP AT lt_location ASSIGNING FIELD-SYMBOL(<location>).
+      IF <location>-location IS INITIAL.
+        msg_text = 'Location can not be empty'.
+        APPEND VALUE #( locationid = <location>-location ) TO failed.
+        APPEND VALUE #( locationid = <location>-location
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-location = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+
+      IF <location>-attraction IS INITIAL.
+        msg_text = 'Attraction can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-attraction = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD validationonticketprice.
+    DATA: msg_text TYPE string.
+    READ ENTITIES OF z00bb_cds_location IN LOCAL MODE
+        ENTITY location
+        FROM VALUE #( FOR <root_key> IN keys ( locationid = <root_key>-locationid
+                                               %control = VALUE #(
+                                                    locationid = if_abap_behv=>mk-on
+                                                    ticketprice = if_abap_behv=>mk-on
+                                                    currency = if_abap_behv=>mk-on
+                                               )
+                                             )
+                    ) RESULT DATA(lt_location).
+
+    LOOP AT lt_location ASSIGNING FIELD-SYMBOL(<location>).
+      IF <location>-Ticketprice IS INITIAL.
+        msg_text = 'ticketprice can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-ticketprice = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+      IF <location>-currency IS INITIAL.
+        msg_text = 'Currency can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-currency = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+
+    ENDLOOP.
+  ENDMETHOD.
+
+  METHOD validationothers.
+    DATA: msg_text TYPE string.
+    READ ENTITIES OF z00bb_cds_location IN LOCAL MODE
+        ENTITY location
+        FROM VALUE #( FOR <root_key> IN keys ( locationid = <root_key>-locationid
+                                               %control = VALUE #(
+                                                    locationid = if_abap_behv=>mk-on
+                                                    phone = if_abap_behv=>mk-on
+                                                    website = if_abap_behv=>mk-on
+                                                    seats_total = if_abap_behv=>mk-on
+                                               )
+                                             )
+                    ) RESULT DATA(lt_location).
+
+    LOOP AT lt_location ASSIGNING FIELD-SYMBOL(<location>).
+
+      IF <location>-phone IS INITIAL.
+        msg_text = 'Phone can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-phone = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+      IF <location>-website IS INITIAL.
+        msg_text = 'Website can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-website = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+      IF <location>-seats_total IS INITIAL.
+        msg_text = 'Maximum seats can not be empty'.
+        APPEND VALUE #( locationid = <location>-locationid ) TO failed.
+        APPEND VALUE #( locationid = <location>-locationid
+                        %msg = new_message( id = 'SABP_BEHV'
+                                            number = '100'
+                                            v1 = msg_text
+                                            severity = if_abap_behv_message=>severity-error )
+                        %element-seats_total = if_abap_behv=>mk-on
+                      ) TO reported.
+      ENDIF.
+
+    ENDLOOP.
+  ENDMETHOD.

@@ -1,0 +1,8 @@
+      METHOD get_features.
+        result = VALUE #( FOR ls_variable IN keys
+                          ( %key                        = ls_variable-%key
+                            %features-%field-locationid = if_abap_behv=>fc-f-read_only
+                          )
+                        ).
+      ENDMETHOD.
+

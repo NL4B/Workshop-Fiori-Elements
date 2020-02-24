@@ -1,7 +1,7 @@
 CLASS lhc_location DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
 
-    METHODS ValidationOnLocation FOR VALIDATION location~ValidationOnLocation
+    METHODS ValidationOnKeyfields FOR VALIDATION location~ValidationOnKeyfields
       IMPORTING keys FOR location.
 
     METHODS DeterminationForNewRecord FOR DETERMINATION location~DeterminationForNewRecord
@@ -50,9 +50,14 @@ CLASS lhc_location IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD get_features.
+    result = VALUE #( FOR ls_variable IN keys
+                      ( %key                        = ls_variable-%key
+                        %features-%field-locationid = if_abap_behv=>fc-f-read_only
+                      )
+                    ).
   ENDMETHOD.
 
-  METHOD validationonlocation.
+  METHOD validationonkeyfields.
     DATA: msg_text TYPE string.
     READ ENTITIES OF z00bb_cds_location IN LOCAL MODE
         ENTITY location

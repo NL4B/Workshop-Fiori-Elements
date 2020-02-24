@@ -29,7 +29,7 @@ define root view Z00BB_CDS_LOCATION
       cast (seats_total as abap.int1) as seats_total,
       'website'                       as gotowebsite,
       website,
-      @Semantics.amount.currencyCode: 'Currency'
+      @Semantics.amount.currencyCode: 'currency'
       ticketprice,
       @Semantics.currencyCode: true
       currency,

@@ -1,0 +1,11 @@
+    METHODS ValidationOnLocation FOR VALIDATION location~ValidationOnLocation
+      IMPORTING keys FOR location.
+
+    METHODS ValidationOnAddress FOR VALIDATION location~ValidationOnAddress
+      IMPORTING keys FOR location.
+
+    METHODS ValidationOnTicketPrice FOR VALIDATION location~ValidationOnTicketPrice
+      IMPORTING keys FOR location.
+
+    METHODS ValidationOthers FOR VALIDATION location~ValidationOthers
+      IMPORTING keys FOR location.

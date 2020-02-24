@@ -1,0 +1,5 @@
+  validation ValidationOnLocation on save  { field location, attraction; }
+  validation ValidationOnAddress on save  { field street, houseno, postalcode, city, area; }
+  validation ValidationOnTicketPrice on save  { field ticketprice, currency; }
+  validation ValidationOthers on save  { field   phone, website,  seats_total; }
+

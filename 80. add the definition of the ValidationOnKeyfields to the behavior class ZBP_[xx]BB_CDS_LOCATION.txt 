@@ -1,7 +1,7 @@
 CLASS lhc_location DEFINITION INHERITING FROM cl_abap_behavior_handler.
   PRIVATE SECTION.
 
-    METHODS ValidationOnLocation FOR VALIDATION location~ValidationOnLocation
+    METHODS ValidationOnKeyfields FOR VALIDATION location~ValidationOnKeyfields
       IMPORTING keys FOR location.
 
     METHODS DeterminationForNewRecord FOR DETERMINATION location~DeterminationForNewRecord
@@ -52,7 +52,7 @@ CLASS lhc_location IMPLEMENTATION.
   METHOD get_features.
   ENDMETHOD.
 
-  METHOD validationonlocation.
+  METHOD validationonkeyfields.
 
   ENDMETHOD.
 

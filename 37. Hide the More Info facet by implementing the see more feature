@@ -157,7 +157,7 @@ define root view Z00BB_CDS_LOCATION
       @UI.hidden: false
       @EndUserText.label: 'Ticket price'
       @UI.fieldgroup:[{ qualifier:'BookingInfo', position:30}]
-      @Semantics.amount.currencyCode: 'Currency'
+      @Semantics.amount.currencyCode: 'currency'
       ticketprice,
       @Semantics.currencyCode: true
       @UI.hidden: false
