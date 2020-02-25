@@ -19,19 +19,27 @@ CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
   METHOD fill_bookings.
 
     GET TIME STAMP FIELD DATA(lv_createdat).
-    TYPES t_booking_list       TYPE TABLE OF zre_dt_bookings   WITH EMPTY KEY.
-    DELETE FROM zre_dt_bookings.
+    TYPES t_booking_list       TYPE TABLE OF z00_dt_bookings   WITH EMPTY KEY.
+    DELETE FROM z00_dt_bookings.
     DATA(lv_visitdat) = cl_abap_tstmp=>add(
       tstmp = lv_createdat
-      secs  = ( 12 * 24 * 60 * 60  )
+      secs  = ( 1 * 24 * 60 * 60  )
     ).
-        DATA(lv_visitdat2) = cl_abap_tstmp=>add(
+    DATA(lv_visitdat1) = cl_abap_tstmp=>add(
       tstmp = lv_createdat
-      secs  = ( 8 * 24 * 60 * 60  )
+      secs  = ( 2 * 24 * 60 * 60  )
     ).
-        DATA(lv_visitdat3) = cl_abap_tstmp=>add(
+    DATA(lv_visitdat2) = cl_abap_tstmp=>add(
       tstmp = lv_createdat
-      secs  = ( 11 * 24 * 60 * 60  )
+      secs  = ( 3 * 24 * 60 * 60  )
+    ).
+    DATA(lv_visitdat3) = cl_abap_tstmp=>add(
+      tstmp = lv_createdat
+      secs  = ( 4 * 24 * 60 * 60  )
+    ).
+    DATA(lv_visitdat4) = cl_abap_tstmp=>add(
+      tstmp = lv_createdat
+      secs  = ( 5 * 24 * 60 * 60  )
     ).
 
     DATA(booking_list) = VALUE t_booking_list(
@@ -62,7 +70,7 @@ CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
           country         = |NL|
           locationid      = 9001
           bookingdate     = lv_createdat
-          visitdate       = lv_visitdat
+          visitdate       = lv_createdat
           numberoftickets = 6
           reviewrate      = 5
           reviewcomment   = |No comment yet|
@@ -83,16 +91,448 @@ CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
           reviewrate      = 5
           reviewcomment   = |No comment yet|
         )
+        (
+          bookingid       = 4
+          firstname       = |Jan|
+          lastname        = |Janssen|
+          street          = |Dalstaat|
+          houseno         = |6|
+          postalcode      = |5552 LS|
+          city            = |Valkenswaard|
+          country         = |NL|
+          locationid      = 9002
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat
+          numberoftickets = 3
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 5
+          firstname       = |Klaas|
+          lastname        = |Helder|
+          street          = |Baanweg|
+          houseno         = |12|
+          postalcode      = |3844 KS|
+          city            = |Harderwijk|
+          country         = |NL|
+          locationid      = 9002
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 1
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 6
+          firstname       = |Jonas|
+          lastname        = |Walvis|
+          street          = |Zeedijk|
+          houseno         = |23|
+          postalcode      = |1154 PP|
+          city            = |Uitdam|
+          country         = |NL|
+          locationid      = 9002
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat3
+          numberoftickets = 12
+          reviewrate      = 3
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 7
+          firstname       = |Hans|
+          lastname        = |Alders|
+          street          = |Koeienweide|
+          houseno         = |14|
+          postalcode      = |2727 GL|
+          city            = |Zoetermeer|
+          country         = |NL|
+          locationid      = 9002
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 2
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 8
+          firstname       = |Wim|
+          lastname        = |Westdijk|
+          street          = |Herlderseweg|
+          houseno         = |24|
+          postalcode      = |1824 SK|
+          city            = |Alkmaar|
+          country         = |NL|
+          locationid      = 9003
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 3
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 9
+          firstname       = |Peter|
+          lastname        = |Veenstra|
+          street          = |Nassaulaan|
+          houseno         = |235|
+          postalcode      = |2243 HK|
+          city            = |Wassenaar|
+          country         = |NL|
+          locationid      = 9004
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 3
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 10
+          firstname       = |Gerritje|
+          lastname        = |Klaassen|
+          street          = |Maarsbergseweg|
+          houseno         = |14|
+          postalcode      = |3956 KT|
+          city            = |Leersum|
+          country         = |NL|
+          locationid      = 9004
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 3
+          reviewrate      = 3
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 11
+          firstname       = |Sietske|
+          lastname        = |Treurniet|
+          street          = |Zuidwendingerweg|
+          houseno         = |14|
+          postalcode      = |9663 AJ|
+          city            = |Nieuwe Pekela|
+          country         = |NL|
+          locationid      = 9004
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat3
+          numberoftickets = 9
+          reviewrate      = 3
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 12
+          firstname       = |Jacqueline|
+          lastname        = |Feestdag|
+          street          = |Karnemelkseweg|
+          houseno         = |4|
+          postalcode      = |3749 AH|
+          city            = |Lage Vuursche|
+          country         = |NL|
+          locationid      = 9004
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat4
+          numberoftickets = 5
+          reviewrate      = 1
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 13
+          firstname       = |Johan|
+          lastname        = |Wilg|
+          street          = |Mooierstraat|
+          houseno         = |54|
+          postalcode      = |3811 EB|
+          city            = |Amersfoort|
+          country         = |NL|
+          locationid      = 9004
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat3
+          numberoftickets = 2
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 14
+          firstname       = |Roberta|
+          lastname        = |Dwaallicht|
+          street          = |Lichtpenweg|
+          houseno         = |6|
+          postalcode      = |3821 BA|
+          city            = |Amersfoort|
+          country         = |NL|
+          locationid      = 9005
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat
+          numberoftickets = 2
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 15
+          firstname       = |Meike|
+          lastname        = |Zeldenrust|
+          street          = |Slaaghwijk|
+          houseno         = |21|
+          postalcode      = |2317 CP|
+          city            = |Leiden|
+          country         = |NL|
+          locationid      = 9005
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 6
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+         )
+        (
+          bookingid       = 16
+          firstname       = |Petra|
+          lastname        = |Veerman|
+          street          = |Visserijkade|
+          houseno         = |4|
+          postalcode      = |2225 TV|
+          city            = |Katwijk aan Zee|
+          country         = |NL|
+          locationid      = 9006
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 3
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 17
+          firstname       = |Gerard|
+          lastname        = |Zuiderwijk|
+          street          = |Trommelaar|
+          houseno         = |103|
+          postalcode      = |3905 BX|
+          city            = |Veenendaal|
+          country         = |NL|
+          locationid      = 9006
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 3
+          reviewrate      = 3
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 18
+          firstname       = |Sabrin|
+          lastname        = |Slingerland|
+          street          = |Boomgaardstraat|
+          houseno         = |4|
+          postalcode      = |3111 KE|
+          city            = |Schiedam|
+          country         = |NL|
+          locationid      = 9006
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat4
+          numberoftickets = 9
+          reviewrate      = 3
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 19
+          firstname       = |Blanka|
+          lastname        = |Draaimolen|
+          street          = |Papiermolen|
+          houseno         = |112|
+          postalcode      = |2665 SX|
+          city            = |Bleiswijk|
+          country         = |NL|
+          locationid      = 9006
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat4
+          numberoftickets = 5
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 20
+          firstname       = |Fred|
+          lastname        = |van Koeningen|
+          street          = |Gaarderslag|
+          houseno         = |23|
+          postalcode      = |2805 DJ|
+          city            = |Gouda|
+          country         = |NL|
+          locationid      = 9006
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat4
+          numberoftickets = 2
+          reviewrate      = 1
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 21
+          firstname       = |Frederiek|
+          lastname        = |Zonnestraal|
+          street          = |Geldplantsoen|
+          houseno         = |34|
+          postalcode      = |5154 BE|
+          city            = |Elshout|
+          country         = |NL|
+          locationid      = 9006
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat
+          numberoftickets = 2
+          reviewrate      = 1
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 22
+          firstname       = |Maaike|
+          lastname        = |Grasheld|
+          street          = |Groeneweg|
+          houseno         = |21|
+          postalcode      = |4261 RG|
+          city            = |Wijk en Aalburg|
+          country         = |NL|
+          locationid      = 9006
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat
+          numberoftickets = 6
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+         )
+        (
+          bookingid       = 23
+          firstname       = |Irene|
+          lastname        = |Wurst|
+          street          = |Wagenstraat|
+          houseno         = |15|
+          postalcode      = |4845 CS|
+          city            = |Wagenberg|
+          country         = |NL|
+          locationid      = 9007
+          bookingdate     = lv_createdat
+          visitdate       = lv_createdat
+          numberoftickets = 6
+          reviewrate      = 3
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 24
+          firstname       = |Jozef|
+          lastname        = |Roest|
+          street          = |Bruinissestraat|
+          houseno         = |154|
+          postalcode      = |3086 BJ|
+          city            = |Rotterdam|
+          country         = |NL|
+          locationid      = 9007
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat4
+          numberoftickets = 4
+          reviewrate      = 4
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 25
+          firstname       = |Carla|
+          lastname        = |Knotje|
+          street          = |Haarweg|
+          houseno         = |34|
+          postalcode      = |4205 ND|
+          city            = |Gorinchem|
+          country         = |NL|
+          locationid      = 9007
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat4
+          numberoftickets = 1
+          reviewrate      = 1
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 26
+          firstname       = |Klaracova|
+          lastname        = |Petersman|
+          street          = |Ruslandstraat|
+          houseno         = |23|
+          postalcode      = |2034 XA|
+          city            = |Haarlem|
+          country         = |NL|
+          locationid      = 9007
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat2
+          numberoftickets = 2
+          reviewrate      = 2
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 27
+          firstname       = |John|
+          lastname        = |Meester|
+          street          = |Schoolbaan|
+          houseno         = |79|
+          postalcode      = |2371 VM|
+          city            = |Roelofarendsveen|
+          country         = |NL|
+          locationid      = 9007
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat2
+          numberoftickets = 6
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+         )
+        (
+          bookingid       = 28
+          firstname       = |Karel|
+          lastname        = |Lau|
+          street          = |Dorpskade|
+          houseno         = |42|
+          postalcode      = |2291 HS|
+          city            = |Wateringen|
+          country         = |NL|
+          locationid      = 9001
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat4
+          numberoftickets = 1
+          reviewrate      = 1
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 29
+          firstname       = |Leo|
+          lastname        = |van Kampen|
+          street          = |Loonstraat|
+          houseno         = |83|
+          postalcode      = |6004 VV|
+          city            = |Weert|
+          country         = |NL|
+          locationid      = 9002
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat3
+          numberoftickets = 2
+          reviewrate      = 2
+          reviewcomment   = |No comment yet|
+        )
+        (
+          bookingid       = 30
+          firstname       = |Linda|
+          lastname        = |Turnschaatser|
+          street          = |Droogstraat|
+          houseno         = |141|
+          postalcode      = |8861 SR|
+          city            = |Harlingen|
+          country         = |NL|
+          locationid      = 9003
+          bookingdate     = lv_createdat
+          visitdate       = lv_visitdat2
+          numberoftickets = 6
+          reviewrate      = 5
+          reviewcomment   = |No comment yet|
+         )
     ).
-    INSERT zre_dt_bookings FROM TABLE @booking_list.
+    INSERT z00_dt_bookings FROM TABLE @booking_list.
 
   ENDMETHOD.
 
 
   METHOD fill_location.
     GET TIME STAMP FIELD DATA(lv_createdat).
-    TYPES t_location_list       TYPE TABLE OF zre_dt_location   WITH EMPTY KEY.
-    DELETE FROM zre_dt_location.
+    TYPES t_location_list       TYPE TABLE OF z00_dt_location   WITH EMPTY KEY.
+    DELETE FROM z00_dt_location.
     DATA(location_list) = VALUE t_location_list(
 *      (
 *        locationid  = 9001
@@ -144,7 +584,7 @@ CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
         area         = |Amsterdam Beach|
         phone        = |0252-465 555|
         attraction   = |Botanical garden|
-        website      = |keukenhof.nl|
+        website      = |https://www.keukenhof.nl|
         logo_url     = |https://cdn.worldvectorlogo.com/logos/keukenhof.svg|
         description  = |The Keukenhof in Lisse is the world’s largest flower garden. The park is almost 32 hectares filled with 7 million tulips, hyacinths and daffodils. | &&
                        |Enjoy the colors and fragrances in this unique park|
@@ -171,7 +611,7 @@ CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
         area         = |Amsterdam City|
         phone        = |020-5567105|
         attraction   = |Museum|
-        website      = |annefrank.org|
+        website      = |https://www.annefrank.org|
 *        logo_url     = |https://www.bankgiroloterij.nl/upload_mm/youtubeelement3/d/8/previewImage727672.JPG|
         description  = |Anne Frank is one of Amsterdam’s most well known former residents. | &&
                        |The Anne Frank House at Prinsengracht 263 in Amsterdam is where she lived in hiding with her family for more than two years during World War II. | &&
@@ -299,7 +739,7 @@ CLASS z00bb_cl_fill_table_data IMPLEMENTATION.
         createdby    = sy-uname
       )
     ).
-    INSERT zre_dt_location FROM TABLE @location_list.
+    INSERT z00_dt_location FROM TABLE @location_list.
   ENDMETHOD.
 
 
