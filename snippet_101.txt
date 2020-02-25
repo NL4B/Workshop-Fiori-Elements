@@ -1,0 +1,2 @@
+    METHODS get_geolocation FOR MODIFY
+      IMPORTING keys FOR ACTION location~get_geolocation RESULT result.

@@ -1,0 +1,11 @@
+@AbapCatalog.sqlViewName: 'Z00BBCCD'
+@AbapCatalog.compiler.compareFilter: true
+@AbapCatalog.preserveKey: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Current Date'
+define view Z00bb_Cds_Current_Date as select from I_Country {
+   tstmp_to_dats( tstmp_current_utctimestamp(),
+                            abap_system_timezone( $session.client,'NULL' ),
+                            $session.client,
+                            'NULL' ) as currentdate
+} where Country = 'NL'

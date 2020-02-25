@@ -1,0 +1,29 @@
+@EndUserText.label: 'Projection View for Administator'
+@AccessControl.authorizationCheck: #CHECK
+@Metadata.allowExtensions: true
+@Metadata.ignorePropagatedAnnotations: true
+
+define root view entity Z00BB_PJV_LOCATION_ADMIN as projection on Z00BB_CDS_LOCATION {
+key locationid,
+location,
+street,
+houseno,
+postalcode,
+city,
+area,
+attraction,
+phone,
+latitude,
+longitude,
+seats_total,
+website,
+ticketprice,
+currency,
+description,
+logo_url,
+changedat,
+changedby,
+createdat,
+createdby,
+seats_unit
+}

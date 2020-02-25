@@ -1,0 +1,37 @@
+@EndUserText.label: 'Projection View for Administator'
+@AccessControl.authorizationCheck: #CHECK
+@Metadata.allowExtensions: true
+@Metadata.ignorePropagatedAnnotations: true
+
+define root view entity Z00BB_PJV_LOCATION_ADMIN
+  as projection on Z00BB_CDS_LOCATION
+{
+  key locationid,
+      location,
+      street,
+      houseno,
+      postalcode,
+      city,
+      area,
+      attraction,
+      phone,
+      latitude,
+      longitude,
+      seats_total,
+      website,
+      @Semantics.amount.currencyCode: 'currency'
+      ticketprice,
+      @Semantics.currencyCode: true
+      currency,
+      description,
+      logo_url,
+      @Semantics.systemDateTime.createdAt: true
+      changedat,
+      @Semantics.user.lastChangedBy: true
+      changedby,
+      @Semantics.systemDateTime.createdAt: true
+      createdat,
+      @Semantics.user.createdBy: true
+      createdby,
+      seats_unit
+}
