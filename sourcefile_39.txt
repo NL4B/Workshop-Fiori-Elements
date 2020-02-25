@@ -584,7 +584,7 @@ CLASS z[xx]bb_cl_fill_table_data IMPLEMENTATION.
         area         = |Amsterdam Beach|
         phone        = |0252-465 555|
         attraction   = |Botanical garden|
-        website      = |keukenhof.nl|
+        website      = |https://www.keukenhof.nl|
         logo_url     = |https://cdn.worldvectorlogo.com/logos/keukenhof.svg|
         description  = |The Keukenhof in Lisse is the world’s largest flower garden. The park is almost 32 hectares filled with 7 million tulips, hyacinths and daffodils. | &&
                        |Enjoy the colors and fragrances in this unique park|
@@ -611,7 +611,7 @@ CLASS z[xx]bb_cl_fill_table_data IMPLEMENTATION.
         area         = |Amsterdam City|
         phone        = |020-5567105|
         attraction   = |Museum|
-        website      = |annefrank.org|
+        website      = |https://www.annefrank.org|
 *        logo_url     = |https://www.bankgiroloterij.nl/upload_mm/youtubeelement3/d/8/previewImage727672.JPG|
         description  = |Anne Frank is one of Amsterdam’s most well known former residents. | &&
                        |The Anne Frank House at Prinsengracht 263 in Amsterdam is where she lived in hiding with her family for more than two years during World War II. | &&

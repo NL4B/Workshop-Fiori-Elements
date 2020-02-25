@@ -143,7 +143,7 @@ define root view Z00BB_CDS_LOCATION
 
       @UI.fieldgroup:[{ qualifier:'MoreInfo', position:30}]
       @EndUserText.label: 'Website URL'
-      @UI.hidden: true
+      @UI.hidden: false
       website,
 
       @UI.hidden: false
