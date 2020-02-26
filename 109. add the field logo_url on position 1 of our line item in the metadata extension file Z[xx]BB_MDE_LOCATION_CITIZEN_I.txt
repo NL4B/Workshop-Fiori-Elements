@@ -1,0 +1,17 @@
+@Metadata.layer: #INDUSTRY
+annotate view Z00BB_PJV_LOCATION_CITIZEN
+    with 
+{
+@Consumption.semanticObject: 'Action'
+@UI.lineItem: [{ 
+  position: 2, 
+  type: #WITH_INTENT_BASED_NAVIGATION,
+  semanticObjectAction: 'toshowparameters',
+  requiresContext: true
+}]
+
+    locationid;
+    
+    @UI.lineItem: [{ position: 1}]
+    logo_url;
+}

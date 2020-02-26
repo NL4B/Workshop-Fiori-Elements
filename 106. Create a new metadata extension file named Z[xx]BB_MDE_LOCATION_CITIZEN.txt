@@ -1,19 +1,29 @@
 @Metadata.layer: #CORE
 
-@EndUserText.label: 'Locations for Admin'
+
+@EndUserText.label: 'Locations for citizen'
 @Search.searchable: true
-@UI.headerInfo.typeName: 'Location for Admin'
-@UI.headerInfo.typeNamePlural: 'Location List for Admin'
+@UI.headerInfo.typeName: 'Location for citizen'
+@UI.headerInfo.typeNamePlural: 'Location List for citizen'
 @UI.headerInfo.imageUrl: 'logo_url'
 @UI.headerInfo.typeImageUrl: 'sap-icon://theater'
 @UI.headerInfo.description.value: 'attraction'
 @UI.headerInfo.title.value: 'location'
-annotate view Z00BB_PJV_LOCATION_ADMIN
+
+annotate view Z00BB_PJV_LOCATION_CITIZEN
     with 
 {
-
   @UI.facet: [
-   {
+     {
+     id: 'ratingfacetheader',
+     purpose: #HEADER,
+     position: 30,
+     importance: #HIGH ,
+     type: #DATAPOINT_REFERENCE,
+     targetQualifier: 'reviewrate',
+     label: 'Rating Facet'
+   },
+  {
      id: 'descriptionheader',
      purpose: #HEADER,
      position: 10,
@@ -41,6 +51,14 @@ annotate view Z00BB_PJV_LOCATION_ADMIN
      targetQualifier: 'BookingInfo',
      position : 20
    },{
+     id : 'RatingTableFacet',
+     purpose : #STANDARD,
+     type : #LINEITEM_REFERENCE,
+     label : 'Reviews',
+     targetElement: '_bookings',
+     targetQualifier: 'rating',
+     position : 25
+   },{
      parentId: 'GeneralInformation',
      id : 'MoreInfoFacet',
      purpose : #STANDARD,
@@ -48,21 +66,15 @@ annotate view Z00BB_PJV_LOCATION_ADMIN
      label : 'More Info',
      targetQualifier: 'MoreInfo',
      position : 30,
-     isPartOfPreview:true
+     isPartOfPreview:false
    },{
-     parentId: 'GeolocationFacet',
      id : 'GeoInfoFacet',
      purpose : #STANDARD,
      type : #FIELDGROUP_REFERENCE,
-//     label : 'Geolocation',
+     label : 'Geolocation',
      targetQualifier: 'GeoInfo',
      position : 40,
      hidden: false
-   },{
-     id: 'GeolocationFacet',
-     label : 'Geolocation',
-     isSummary: true,
-     type: #COLLECTION
    }]
   @EndUserText.label: 'Location Id'
   @UI.fieldGroup:[{ qualifier:'MoreInfo', position:5}]
@@ -77,18 +89,18 @@ annotate view Z00BB_PJV_LOCATION_ADMIN
   @EndUserText.label: 'Street'
   @Search.defaultSearchElement: true
   @Search.fuzzinessThreshold: 0.8
-  @UI.lineItem: [{position: 20, importance: #MEDIUM }]
+ 
   @UI.identification:[ { position: 20} ]
   street;
   @EndUserText.label: 'No'
-  @UI.lineItem: [{position: 30, importance: #MEDIUM }]
+ 
   @UI.identification:[ { position: 30} ]
   houseno;
   @EndUserText.label: 'ZipCode'
-  @UI.lineItem: [{position: 40, importance: #LOW }]
+ 
   @UI.identification:[ { position: 40} ]
   postalcode;
-  @UI.lineItem: [{position: 50, importance: #MEDIUM }]
+
   @UI.identification:[ { position: 50} ]
   @EndUserText.label: 'City'
   city;
@@ -115,41 +127,42 @@ annotate view Z00BB_PJV_LOCATION_ADMIN
   @UI.fieldGroup:[{ qualifier:'MoreInfo', position:20}]
   phone;
   @EndUserText.label: 'Latitude'
-  @UI.fieldGroup:[{ qualifier:'GeoInfo', position:10},
-  {
-    qualifier: 'GeoInfo',
-    type: #FOR_ACTION,
-    dataAction: 'get_coordinates',
-    label:'Get Geolocation',
-    position:10
-  }]
+  @UI.fieldGroup:[{ qualifier:'GeoInfo', position:10}]
   latitude;
   @EndUserText.label: 'Longitude'
   @UI.fieldGroup:[{ qualifier:'GeoInfo', position:20}]
   longitude;
 
+
+  @UI.dataPoint:{
+   visualization: #RATING,
+   targetValue: 6
+  }
+  @EndUserText.label: 'Rating'
+  @UI.lineItem: [{position: 80, importance: #LOW, type: #AS_DATAPOINT, label: 'Rating'}]
+  reviewrate;
+
+  @UI.dataPoint: {
+    targetValueElement:'seats_total',
+    visualization:#PROGRESS
+  }
+  @EndUserText.label: 'Occupied Seats'
+  @UI.fieldGroup:[{ qualifier:'BookingInfo', position:10}]
+  seats_booked;
+
   @UI.fieldGroup:[{ qualifier:'BookingInfo', position:20}]
   @EndUserText.label: 'Max seats'
   seats_total;
+
+  @UI.lineItem: [{position:75, importance: #LOW, type: #WITH_URL, url: 'website' }]
+  @EndUserText.label: 'Link'
+  gotowebsite;
 
   @UI.hidden: false
   @UI.fieldGroup:[{ qualifier:'MoreInfo', position:30}]
   @EndUserText.label: 'Website URL'
   website;
 
-  @UI.hidden: false
-  @EndUserText.label: 'Ticket price'
-  @UI.fieldGroup:[{ qualifier:'BookingInfo', position:30}]
-  ticketprice;
-  @Consumption.valueHelpDefinition: [{
-  entity: {b
-        name: 'I_CurrencyStdVH' ,
-        element: 'Currency'
-    },
-    label: 'Default Valuehelp for Currency'
-  }]
-  @UI.hidden: false
-  currency;
 
   @UI.fieldGroup:[{
     qualifier: 'HeaderDescription'
@@ -161,13 +174,10 @@ annotate view Z00BB_PJV_LOCATION_ADMIN
   @UI.hidden: false
   logo_url;
 
+  @EndUserText.label: 'Ticket Price'
+  @UI.lineItem: [{position:90, importance: #LOW}]
+  ticketpriceineuro;
   @UI.hidden: true
-  changedat;
-  @UI.hidden: true
-  changedby;
-  @UI.hidden: true
-  createdat;
-  @UI.hidden: true
-  createdby;
-
+  currencyeuro;
+    
 }

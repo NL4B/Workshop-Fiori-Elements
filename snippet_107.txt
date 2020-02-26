@@ -1,0 +1,6 @@
+projection;
+
+define behavior for Z[xx]BB_PJV_LOCATION_CITIZEN 
+{
+
+}

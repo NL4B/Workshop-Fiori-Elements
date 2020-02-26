@@ -72,6 +72,7 @@ CLASS lhc_location IMPLEMENTATION.
                     ).
   ENDMETHOD.
 
+
   METHOD validationonkeyfields.
     DATA: msg_text TYPE string.
     READ ENTITIES OF z00bb_cds_location IN LOCAL MODE
@@ -350,10 +351,13 @@ CLASS lhc_location IMPLEMENTATION.
            FAILED    failed
            REPORTED  reported.
 
+
+
+
+
     MOVE-CORRESPONDING  lt_location TO lt_update.
 
     LOOP AT lt_update ASSIGNING FIELD-SYMBOL(<location>).
-
       CASE <location>-area.
         WHEN 'Amsterdam Beach'.
           <location>-latitude     = CONV f( |52.268308| ).
@@ -379,12 +383,30 @@ CLASS lhc_location IMPLEMENTATION.
     ENDLOOP.
 
 
-    MODIFY ENTITIES OF z00bb_cds_location  IN LOCAL MODE
+    MODIFY ENTITIES OF z00bb_cds_location IN LOCAL MODE
            ENTITY      location
-           UPDATE FROM lt_update
+           UPDATE FIELDS (
+           latitude
+           longitude
+           )
+           WITH lt_update
            FAILED      failed
            REPORTED    reported.
+
+
+
+
+    result = VALUE #( FOR update IN  lt_update INDEX INTO idx
+                             ( %cid_ref = keys[ idx ]-%cid_ref
+                               %key     = keys[ idx ]-locationid
+                               %param   = CORRESPONDING #(  update ) ) ) .
+
+
+
+
+
+
+
   ENDMETHOD.
 
 ENDCLASS.
-

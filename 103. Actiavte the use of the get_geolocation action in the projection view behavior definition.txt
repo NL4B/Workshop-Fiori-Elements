@@ -6,5 +6,5 @@ define behavior for Z00BB_PJV_LOCATION_ADMIN
   use update;
   use delete;
 
-  use action get_geolocation;
+  use action get_geolocation external 'get_coordinates';
 }

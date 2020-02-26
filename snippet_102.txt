@@ -1,0 +1,73 @@
+  METHOD get_geolocation.
+    DATA lt_update TYPE  TABLE FOR UPDATE z[xx]bb_cds_location.
+
+    READ ENTITY z[xx]bb_cds_location\\location
+           FIELDS ( locationid
+                    street
+                    houseno
+                    city
+                    postalcode
+                    area
+                  )
+             WITH VALUE #( FOR <root_key> IN keys (  %key = <root_key>-%key ) )
+           RESULT    DATA(lt_location)
+           FAILED    failed
+           REPORTED  reported.
+
+
+
+
+
+    MOVE-CORRESPONDING  lt_location TO lt_update.
+
+    LOOP AT lt_update ASSIGNING FIELD-SYMBOL(<location>).
+      CASE <location>-area.
+        WHEN 'Amsterdam Beach'.
+          <location>-latitude     = CONV f( |52.268308| ).
+          <location>-longitude    = CONV f( |4.550096| ).
+        WHEN 'Amsterdam City'.
+          <location>-latitude     = CONV f( |52.358037| ).
+          <location>-longitude    = CONV f( |4.879755| ).
+        WHEN 'Amsterdam Castles & Gardens'.
+          <location>-latitude     = CONV f( |52.334312| ).
+          <location>-longitude    = CONV f( |5.071558| ).
+        WHEN OTHERS.
+
+      DATA(msg_text) = 'Cannot determine geolocation for ' && <location>-area.
+      APPEND VALUE #( locationid = <location>-locationid ) TO failed-location.
+      APPEND VALUE #( locationid = <location>-locationid
+                      %msg = new_message( id = 'SABP_BEHV'
+                                          number = '100'
+                                          v1 = msg_text
+                                          severity = if_abap_behv_message=>severity-error )
+                      %element-seats_total = if_abap_behv=>mk-on
+                    ) TO reported-location.
+         ENDCASE.
+    ENDLOOP.
+
+
+    MODIFY ENTITIES OF z[xx]bb_cds_location IN LOCAL MODE
+           ENTITY      location
+           UPDATE FIELDS (
+           latitude
+           longitude
+           )
+           WITH lt_update
+           FAILED      failed
+           REPORTED    reported.
+
+
+
+
+    result = VALUE #( FOR update IN  lt_update INDEX INTO idx
+                             ( %cid_ref = keys[ idx ]-%cid_ref
+                               %key     = keys[ idx ]-locationid
+                               %param   = CORRESPONDING #(  update ) ) ) .
+
+
+
+
+
+
+
+  ENDMETHOD.

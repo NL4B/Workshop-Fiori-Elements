@@ -1,0 +1,2 @@
+    @UI.lineItem: [{ position: 1}]
+    logo_url;
