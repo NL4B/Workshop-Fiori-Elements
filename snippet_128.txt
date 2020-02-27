@@ -1,0 +1,22 @@
+				<Annotation Term="UI.SelectionVariant" Qualifier="Museum">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantMuseum"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;MUSEUM}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Museum"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>

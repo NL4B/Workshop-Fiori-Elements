@@ -1,0 +1,33 @@
+			<Annotations Target="Metadata.cds_z[xx]bb_service_definition_Entities/locationforadmin">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record Type="Capabilities.FilterRestrictionsType">
+						<PropertyValue Property="NonFilterableProperties">
+							<Collection>
+								<PropertyPath>changedat</PropertyPath>
+								<PropertyPath>changedby</PropertyPath>
+								<PropertyPath>createdat</PropertyPath>
+								<PropertyPath>createdby</PropertyPath>
+								<PropertyPath>currency</PropertyPath>
+								<PropertyPath>description</PropertyPath>
+								<PropertyPath>get_coordinates_ac</PropertyPath>
+								<PropertyPath>houseno</PropertyPath>
+								<PropertyPath>latitude</PropertyPath>
+								<PropertyPath>location</PropertyPath>
+								<PropertyPath>location_fc</PropertyPath>
+								<PropertyPath>locationid</PropertyPath>
+								<PropertyPath>locationid_fc</PropertyPath>
+								<PropertyPath>logo_url</PropertyPath>
+								<PropertyPath>longitude</PropertyPath>
+								<PropertyPath>phone</PropertyPath>
+								<PropertyPath>postalcode</PropertyPath>
+								<PropertyPath>seats_total</PropertyPath>
+								<PropertyPath>seats_unit</PropertyPath>
+								<PropertyPath>street</PropertyPath>
+								<PropertyPath>ticketprice</PropertyPath>
+								<PropertyPath>website</PropertyPath>
+								<PropertyPath>city</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>

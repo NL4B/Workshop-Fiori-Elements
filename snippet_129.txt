@@ -1,0 +1,91 @@
+				<Annotation Term="UI.SelectionVariant" Qualifier="Tours">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantTours"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;MUSEUM}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Tours"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				
+				<Annotation Term="UI.SelectionVariant" Qualifier="Rentals">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantRentals"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;MUSEUM}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Rentals"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				
+				<Annotation Term="UI.SelectionVariant" Qualifier="Experiences">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantExperiences"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;MUSEUM}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Experiences"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+
+				<Annotation Term="UI.SelectionVariant" Qualifier="Others">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantOthers"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;MUSEUM}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Others"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>

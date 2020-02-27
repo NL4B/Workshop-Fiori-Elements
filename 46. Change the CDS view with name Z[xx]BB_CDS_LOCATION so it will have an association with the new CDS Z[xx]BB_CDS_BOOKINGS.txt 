@@ -19,9 +19,7 @@
 define root view Z00BB_CDS_LOCATION
   as select from zre_dt_location
   association [0..*] to Z00BB_CDS_BOOKINGS as _bookings
-                     on $projection.locationid = _bookings.locationid
-  association [0..1] to Z00BB_CDS_BOOKINGS_TOTAL_TODAY as _bookings_total
-                     on $projection.locationid = _bookings_total.locationid                     
+                     on $projection.locationid = _bookings.locationid                    
 {
 
       @UI.facet: [{

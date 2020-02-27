@@ -21,7 +21,7 @@
       ENDIF.
 
       IF <location>-seats_unit IS INITIAL.
-        <location>-seats_unit = |ST|.
+        <location>-seats_unit = |PC|.
         <location>-%control-seats_unit   = cl_abap_behv=>flag_changed.
       ENDIF.
 

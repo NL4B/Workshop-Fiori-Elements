@@ -1,0 +1,145 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "com.nl4b.fiori.workshop.locationforadminui",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"tags": {
+			"keywords": []
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZREBB_SERVICE_API/",
+				"type": "OData",
+				"settings": {
+					"annotations": ["ZREBB_SERVICE_API_VAN", "ODataAnnotation1"],
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"ZREBB_SERVICE_API_VAN": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZREBB_SERVICE_API_VAN',Version='0001')/$value",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/ZREBB_SERVICE_API_VAN.xml"
+				}
+			},
+			"ODataAnnotation1": {
+				"uri": "annotations/local.xml",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "annotations/local.xml"
+				}
+			}
+		},
+		"offline": false,
+		"sourceTemplate": {
+			"id": "html5moduletemplates.smartTemplateModule",
+			"version": "1.40.12"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"resources": {
+			"js": [],
+			"css": []
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {},
+			"components": {}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"i18n|sap.suite.ui.generic.template.ListReport|locationforadmin": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/ListReport/locationforadmin/i18n.properties"
+			},
+			"i18n|sap.suite.ui.generic.template.ObjectPage|locationforadmin": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/ObjectPage/locationforadmin/i18n.properties"
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"metadataUrlParams": {
+						"sap-value-list": "none"
+					},
+					"serviceUrlParams": {
+						"saml2": "disabled"
+					},
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"refreshAfterChange": false
+				}
+			}
+		},
+		"extends": {
+			"extensions": {}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.ui.generic.app": {
+		"_version": "1.3.0",
+		"settings": {
+			"forceGlobalRefresh": false,
+			"objectPageHeaderType": "Dynamic",
+			"showDraftToggle": false
+		},
+		"pages": {
+			"ListReport|locationforadmin": {
+				"entitySet": "locationforadmin",
+				"component": {
+					"name": "sap.suite.ui.generic.template.ListReport",
+					"list": true,
+					"settings": {
+						"condensedTableLayout": true,
+						"smartVariantManagement": true,
+						"enableTableFilterInPageVariant": true
+					}
+				},
+				"pages": {
+					"ObjectPage|locationforadmin": {
+						"entitySet": "locationforadmin",
+						"component": {
+							"name": "sap.suite.ui.generic.template.ObjectPage"
+						}
+					}
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": ""
+	}
+}
