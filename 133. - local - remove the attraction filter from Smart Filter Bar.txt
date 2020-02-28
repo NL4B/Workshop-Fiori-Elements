@@ -1,0 +1,152 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="../../../sap/zrebb_service_api/$metadata">
+		<edmx:Include Alias="Metadata" Namespace="cds_zrebb_service_definition"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="zrebb_service_api_van.v1">
+			<Annotations Target="Metadata.cds_zrebb_service_definition_Entities/locationforadmin">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record Type="Capabilities.FilterRestrictionsType">
+						<PropertyValue Property="NonFilterableProperties">
+							<Collection>
+								<PropertyPath>changedat</PropertyPath>
+								<PropertyPath>changedby</PropertyPath>
+								<PropertyPath>createdat</PropertyPath>
+								<PropertyPath>createdby</PropertyPath>
+								<PropertyPath>currency</PropertyPath>
+								<PropertyPath>description</PropertyPath>
+								<PropertyPath>get_coordinates_ac</PropertyPath>
+								<PropertyPath>houseno</PropertyPath>
+								<PropertyPath>latitude</PropertyPath>
+								<PropertyPath>location</PropertyPath>
+								<PropertyPath>location_fc</PropertyPath>
+								<PropertyPath>locationid</PropertyPath>
+								<PropertyPath>locationid_fc</PropertyPath>
+								<PropertyPath>logo_url</PropertyPath>
+								<PropertyPath>longitude</PropertyPath>
+								<PropertyPath>phone</PropertyPath>
+								<PropertyPath>postalcode</PropertyPath>
+								<PropertyPath>seats_total</PropertyPath>
+								<PropertyPath>seats_unit</PropertyPath>
+								<PropertyPath>street</PropertyPath>
+								<PropertyPath>ticketprice</PropertyPath>
+								<PropertyPath>website</PropertyPath>
+								<PropertyPath>city</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="Metadata.locationforadminType">
+				<Annotation Term="UI.SelectionVariant" Qualifier="Museum">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantMuseum"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;MUSEUM}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Museum"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="Tours">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantTours"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;TOURS}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Tours"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="Rentals">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantRentals"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;RENTALS}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Rentals"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="Experiences">
+					<Record Type="UI.SelectionVariantType">
+						<PropertyValue Property="ID" String="SelectionVariantExperiences"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;EXPERIENCES}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection>
+								<Record Type="UI.SelectOptionType">
+									<PropertyValue Property="PropertyName" PropertyPath="attraction"/>
+									<PropertyValue Property="Ranges">
+										<Collection>
+											<Record Type="UI.SelectionRangeType">
+												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+												<PropertyValue Property="Low" String="Experiences"/>
+											</Record>
+										</Collection>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionVariant" Qualifier="All">
+					<Record>
+						<PropertyValue Property="ID" String="SelectionVariantAll"/>
+						<PropertyValue Property="Text" String="{@i18n&gt;ALL}"/>
+						<PropertyValue Property="SelectOptions">
+							<Collection></Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>area</PropertyPath>
+					</Collection>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

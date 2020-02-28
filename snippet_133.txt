@@ -1,0 +1,5 @@
+				<Annotation Term="UI.SelectionFields">
+					<Collection>
+						<PropertyPath>area</PropertyPath>
+					</Collection>
+				</Annotation>

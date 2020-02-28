@@ -1,0 +1,3 @@
+			<Annotations Target="Metadata.locationforadminType/city">
+				<Annotation Term="Common.IsUpperCase" Bool="true"/>
+			</Annotations>

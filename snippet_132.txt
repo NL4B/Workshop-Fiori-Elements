@@ -2,19 +2,20 @@
 							"variants":{
 								"0":{
 									"key":"_tab1",
+									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Others"
+								},
+								"1":{
+									"key":"_tab2",
 									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Museum"
 								},
 								"2":{
-									"key":"_tab2",
+									"key":"_tab3",
 									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Rentals"
 								},
 								"3":{
-									"key":"_tab3",
-									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Tours"
-								},
-								"4":{
 									"key":"_tab4",
-									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Others"
+									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Tours"
 								}
-							}							
+								
+							}
 						}

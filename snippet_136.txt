@@ -1,0 +1,2 @@
+#XTIT, Default title for unnamed objects
+NEW_OBJECT=New Location

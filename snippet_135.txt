@@ -1,0 +1,3 @@
+			<Annotations Target="Metadata.locationforadminType/area">
+				<Annotation Term="Common.ValueListWithFixedValues" Bool="true"/>
+			</Annotations>

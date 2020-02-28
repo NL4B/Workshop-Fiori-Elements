@@ -1,0 +1,27 @@
+# This is the resource bundle for Location App for Administrators#Texts for manifest.json
+
+#XTIT: Application name
+appTitle=Location App for Administrators
+
+#YDES: Application description
+appDescription=
+
+
+ 
+#XFLD,35: 
+MUSEUM=Museum 
+ 
+#XFLD,25: 
+TOURS=Tours
+ 
+#XFLD,35: 
+RENTALS=Rentals
+ 
+#XFLD,33: 
+EXPERIENCES=Experiences
+ 
+#XFLD,15: 
+ALL=All
+
+#XTIT, Default title for unnamed objects
+NEW_OBJECT=New Location
