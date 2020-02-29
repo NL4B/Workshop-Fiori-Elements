@@ -1,0 +1,5 @@
+				"sap.ui.controllerExtensions": {
+					"sap.suite.ui.generic.template.ListReport.view.ListReport": {
+						"controllerName": "com.nl4b.fiori.workshop.locationforadminui.ext.controller.ListReportExt"
+					}
+				}

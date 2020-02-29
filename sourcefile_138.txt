@@ -1,0 +1,19 @@
+sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.ListReportExt", {
+	onInit: function() {
+		var oSmartFilterBar = this.getView().byId("listReportFilter");
+		oSmartFilterBar.addAggregation("customData",
+			new sap.ui.core.CustomData({
+				key: "executeStandardVariantOnSelect",
+				value: true
+			})
+		);
+	},
+
+	onInitSmartFilterBarExtension: function(oEvent) {
+		var oSmartFilterBar = oEvent.getSource();
+		var liveMode = oSmartFilterBar.getLiveMode();
+		if(!liveMode) {
+			oSmartFilterBar.setLiveMode(true);
+		}
+	}
+});
