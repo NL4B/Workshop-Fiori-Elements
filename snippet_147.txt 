@@ -1,0 +1,7 @@
+	handleTwitterButtonPressed: function(oEvent){
+		var twitterSearchUrl = "https://twitter.com/search?q=<location>&src=typed_query";
+		var row = oEvent.getSource().getParent().getBindingContext().getObject();
+		twitterSearchUrl = twitterSearchUrl.replace("<location>", row.location);
+		sap.m.URLHelper.redirect(twitterSearchUrl, true);
+		return false;
+	},

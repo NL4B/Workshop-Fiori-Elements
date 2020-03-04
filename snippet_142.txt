@@ -1,0 +1,3 @@
+					"sap.suite.ui.generic.template.ObjectPage.view.Details": {
+						"controllerName": "com.nl4b.fiori.workshop.locationforadminui.ext.controller.ObjectPageExt"
+					}

@@ -1,0 +1,121 @@
+sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.ObjectPageExt", {
+
+	applyCustomStateExtension: function (oState) {
+		this.activateButtonEvents();
+		var createMode = this.getOwnerComponent().getModel("ui").getData().createMode
+		if (createMode === true) {
+			this.showCreate();
+		} else {
+			this.showDisplay();
+		}
+	},
+
+	activateButtonEvents: function(){
+		var backButton = sap.ui.getCore().byId("backBtn");
+		backButton.attachEvent("press", this.handleOnBack, this);
+		var editButton = this.getView().byId("edit");
+		editButton.attachEvent("press", this.handleOnEdit, this);
+		var cancelButton = this.getView().byId("cancel");
+		cancelButton.attachEvent("press", this.handleOnCancel, this);
+		var saveButton = this.getView().byId("save");
+		saveButton.attachEvent("press", this.handleOnSave, this);
+		var deleteButton = this.getView().byId("delete");
+		deleteButton.attachEvent("press", this.handleOnDelete, this);
+
+	},
+	
+	deactivateButtonEvents: function(){
+		var backButton = sap.ui.getCore().byId("backBtn");
+		backButton.detachEvent("press", this.handleOnBack, this);
+		var editButton = this.getView().byId("edit");
+		editButton.detachEvent("press", this.handleOnEdit, this);
+		var cancelButton = this.getView().byId("cancel");
+		cancelButton.detachEvent("press", this.handleOnCancel, this);
+		var saveButton = this.getView().byId("save");
+		saveButton.detachEvent("press", this.handleOnSave, this);
+		var deleteButton = this.getView().byId("delete");
+		deleteButton.detachEvent("press", this.handleOnDelete, this);
+	},
+
+	handleOnBack: function (oEvent) {
+		// =======================================================================
+    	// Place code which reacts on Back button
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================
+    	this.deactivateButtonEvents();
+	},
+	handleOnEdit: function (oEvent) {
+		// =======================================================================
+    	// Place code which reacts on Edit button
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================
+		this.showEdit();
+	},
+	handleOnSave: function (oEvent) {
+		// =======================================================================
+    	// Place code which reacts on Save button
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================
+		this.deactivateButtonEvents();
+	},
+	handleOnCancel: function (oEvent) {
+		// =======================================================================
+    	// Place code which reacts on Cancel button
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================		
+		this.deactivateButtonEvents();
+	},
+	handleOnDelete: function (oEvent) {
+		// =======================================================================
+    	// Place code which reacts on Delete button
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================
+		this.deactivateButtonEvents();
+	},
+	
+	showCreate: function () {
+		// =======================================================================
+    	// Place code for modifying Object Page Create Screen
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================
+	},
+	showEdit: function () {
+		// =======================================================================
+    	// Place code for modifying Object Page Edit Screen
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================
+	},
+	showDisplay: function () {
+		// =======================================================================
+    	// Place code for modifying Object Page Display Screen
+    	// -----------------------------------------------------------------------
+    	
+    	
+    	// =======================================================================
+	},
+
+	prefillField: function (sGroup,sSmartfield,sValue) {
+		var sId = sSmartfield;
+		if (sGroup !== null) {
+			sId = sGroup + "::" + sSmartfield + "::Field";
+		}
+		var oField = this.getView().byId(sId);
+		if (oField !== null){
+			oField.setValue(sValue);
+		}
+	},
+});

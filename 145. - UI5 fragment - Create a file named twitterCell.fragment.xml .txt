@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+					<Avatar
+							src="https://cdn.pixabay.com/photo/2018/06/22/19/03/logo-3491390_960_720.png"
+							displaySize="XS"
+							displayShape="Square"
+							showBorder="false"
+							press="handleTwitterButtonPressed">
+					</Avatar>
+</core:FragmentDefinition>

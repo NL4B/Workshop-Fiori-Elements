@@ -1,0 +1,3 @@
+    	this.prefillField("MoreInfoFacet", "attraction", "Museum");	
+    	this.prefillField("GeneralInfo", "area", "Amsterdam City");	
+    	this.prefillField(null, "BookingInfoFacet::ticketprice::Field-sfEdit-input", "EUR");	
