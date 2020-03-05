@@ -9,7 +9,6 @@
 								<PropertyPath>createdby</PropertyPath>
 								<PropertyPath>currency</PropertyPath>
 								<PropertyPath>description</PropertyPath>
-								<PropertyPath>get_coordinates_ac</PropertyPath>
 								<PropertyPath>houseno</PropertyPath>
 								<PropertyPath>latitude</PropertyPath>
 								<PropertyPath>location</PropertyPath>
