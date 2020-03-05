@@ -1,5 +1,9 @@
 sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.ObjectPageExt", {
 
+	onInit: function (oEvent) {
+			this.getOwnerComponent().getRouter().getRoute("root").attachPatternMatched(this.deactivateButtonEvents, this);
+	},
+
 	applyCustomStateExtension: function (oState) {
 		this.activateButtonEvents();
 		var createMode = this.getOwnerComponent().getModel("ui").getData().createMode
@@ -44,7 +48,6 @@ sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.Obj
     	
     	
     	// =======================================================================
-    	this.deactivateButtonEvents();
 	},
 	handleOnEdit: function (oEvent) {
 		// =======================================================================
@@ -62,7 +65,6 @@ sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.Obj
     	
     	
     	// =======================================================================
-		this.deactivateButtonEvents();
 	},
 	handleOnCancel: function (oEvent) {
 		// =======================================================================
@@ -71,7 +73,6 @@ sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.Obj
     	
     	
     	// =======================================================================		
-		this.deactivateButtonEvents();
 	},
 	handleOnDelete: function (oEvent) {
 		// =======================================================================
@@ -80,7 +81,6 @@ sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.Obj
     	
     	
     	// =======================================================================
-		this.deactivateButtonEvents();
 	},
 	
 	showCreate: function () {

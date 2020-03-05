@@ -1,0 +1,18 @@
+@AbapCatalog.sqlViewName: 'Z[xx]BBCATVH'
+@AbapCatalog.compiler.compareFilter: true
+@AccessControl.authorizationCheck: #CHECK
+@EndUserText.label: 'Valuehelp for Area'
+@Search.searchable: true
+/*+[hideWarning] { "IDS" : [ "KEY_CHECK" ]  } */
+define view Z[xx]BB_CDS_ATTRACTION_VH 
+  as select from DDCDS_CUSTOMER_DOMAIN_VALUE_T( p_domain_name: 'Z[xx]BB_DO_ATTRACTION' ) 
+{
+      @UI.hidden
+      @Search.defaultSearchElement: true
+      @Search.fuzzinessThreshold: 0.8
+  key value_low as attraction,
+      @Semantics.text: true
+      text
+    
+}
+where language = $session.system_language 

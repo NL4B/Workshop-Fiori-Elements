@@ -1,0 +1,20 @@
+			<Annotations Target="Metadata.locationforadminType/attraction">			
+				<Annotation Term="Common.ValueList">
+					<Record>
+						<PropertyValue Property="Label" String="Default Valuehelp for Area"/>
+						<PropertyValue Property="CollectionPath" String="attraction_vh"/>
+						<PropertyValue Property="SearchSupported" Bool="false"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut">
+									<PropertyValue Property="LocalDataProperty" PropertyPath="attraction"/>
+									<PropertyValue Property="ValueListProperty" String="attraction"/>
+								</Record>
+								<Record Type="Common.ValueListParameterDisplayOnly">
+									<PropertyValue Property="ValueListProperty" String="text"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>	

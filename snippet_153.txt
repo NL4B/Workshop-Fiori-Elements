@@ -1,0 +1,3 @@
+			<Annotations Target="Metadata.locationforadminType/phone">
+				<Annotation Term="Communication.IsPhoneNumber" Bool="true"/>
+			</Annotations>

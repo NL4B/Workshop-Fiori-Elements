@@ -1,0 +1,3 @@
+			<Annotations Target="Metadata.locationforadminType/website">
+				<Annotation Term="Core.IsURL" Bool="true"/>
+			</Annotations>
