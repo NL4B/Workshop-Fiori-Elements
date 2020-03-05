@@ -140,9 +140,9 @@
 					</Record>
 				</Annotation>
 
-				<Annotation Term="UI.SelectionVariant" Qualifier="Others">
+				<Annotation Term="UI.SelectionVariant" Qualifier="All">
 					<Record Type="UI.SelectionVariantType">
-						<PropertyValue Property="ID" String="SelectionVariantOthers"/>
+						<PropertyValue Property="ID" String="SelectionVariantAll"/>
 						<PropertyValue Property="Text" String="{@i18n&gt;MUSEUM}"/>
 						<PropertyValue Property="SelectOptions">
 							<Collection>
@@ -153,7 +153,7 @@
 											<Record Type="UI.SelectionRangeType">
 												<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
 												<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
-												<PropertyValue Property="Low" String="Others"/>
+												<PropertyValue Property="Low" String="All"/>
 											</Record>
 										</Collection>
 									</PropertyValue>
@@ -162,7 +162,6 @@
 						</PropertyValue>
 					</Record>
 				</Annotation>
-			</Annotations>
 		</Schema>
 	</edmx:DataServices>
 </edmx:Edmx>

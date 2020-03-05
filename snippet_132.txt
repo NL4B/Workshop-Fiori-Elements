@@ -2,7 +2,7 @@
 							"variants":{
 								"0":{
 									"key":"_tab1",
-									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Others"
+									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#All"
 								},
 								"1":{
 									"key":"_tab2",
@@ -15,6 +15,10 @@
 								"3":{
 									"key":"_tab4",
 									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Tours"
+								},
+								"4":{
+									"key":"_tab5",
+									"annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Experiences"
 								}
 								
 							}
