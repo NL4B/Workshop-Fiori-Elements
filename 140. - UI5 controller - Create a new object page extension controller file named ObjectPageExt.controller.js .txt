@@ -6,7 +6,7 @@ sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.Obj
 
 	applyCustomStateExtension: function (oState) {
 		this.activateButtonEvents();
-		var createMode = this.getOwnerComponent().getModel("ui").getData().createMode
+		var createMode = this.getOwnerComponent().getModel("ui").getData().createMode;
 		if (createMode === true) {
 			this.showCreate();
 		} else {
