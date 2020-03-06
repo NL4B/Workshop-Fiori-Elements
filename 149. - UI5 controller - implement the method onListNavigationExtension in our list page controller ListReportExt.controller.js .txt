@@ -25,14 +25,13 @@ sap.ui.controller("com.nl4b.fiori.workshop.locationforadminui.ext.controller.Lis
 		return false;
 	},
 	
-    onListNavigationExtension: function(oEvent){
-		var oNavigationController = this.extensionAPI.getNavigationController();
-		var oCustomData = oEvent.getParameter("srcControl").getCustomData().find( function(item) {
-			return item.getKey() == "Navigation" 
-		});
-		if (typeof oCustomData !== "undefined" && oCustomData.getValue().localeCompare("Prevent") === 0) { 
-			return true 
-		};
-		return false;
-	}
+       onListNavigationExtension: function(oEvent){
+         var oCustomData = oEvent.getParameter("srcControl").getCustomData().find( function(item) {
+           return item.getKey() === "Navigation";
+         });
+        if (typeof oCustomData !== "undefined" && oCustomData.getValue().localeCompare("Prevent") === 0) {
+          return true;
+        }
+        return false;
+      }
 });
