@@ -36,7 +36,7 @@ define root view Z00BB_CDS_LOCATION
       currency,
       description,
       logo_url,
-       @Semantics.systemDateTime.createdAt: true 
+       @Semantics.systemDateTime.lastChangedAt: true 
       changedat,
       @Semantics.user.lastChangedBy: true  
       changedby,
